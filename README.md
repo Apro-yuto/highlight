@@ -1,1 +1,70 @@
-# Overview
+# highlight
+
+## Tech Stack
+- Laravel 8.x
+- PHP 8.x
+- MySQL 8.0
+- Nodejs (lts/fermium)
+- Typescript
+- React Hooks
+- Inertia.js
+
+## Prerequisites
+
+- docker
+- nvm(https://github.com/nvm-sh/nvm#installing-and-updating)のinstalling-and-updatingからインストールしてねー。
+
+## Setup
+
+0. [Prerequisites](#Prerequisites) にあるものをインストール
+
+1. aliasの設定
+```bash
+echo "alias run='./Taskfile'" >> ~/.zshrc
+```
+
+2. WEBサーバを立ち上げ
+
+```bash
+# ↓ コマンドを実行するディレクトリを注意
+[~] $ git clone ssh://git@github.com:Apro-yuto/highlight.git
+[~] $ cd highlight
+
+# PHPパッケージをインストール
+[highlight] $ run up
+[highlight] $ run composer install
+
+# .env ファイルを準備
+[highlight] $ cp .env.example .env
+[highlight] $ run artisan key:generate
+[highlight] $ run artisan migrate --seed
+```
+
+# マイグレーションを実行
+
+3. JSをセットアップ
+```
+`/etc/hosts` ファイルに追加
+// /etc/hosts
+
+127.0.0.1 host.docker.internal
+```
+
+```zsh
+# node バージョンを統一するように
+[highlight] $ nvm install && nvm use
+
+# node パッケージをインストール
+[highlight] $ npm ci
+
+# vite を起動
+[highlight] $ npm run dev
+```
+
+`npm run dev` に表示されたポート番号が `3000` 以外の場合は `.env` に設定：
+```
+// .env
+VITE_PORT=3000
+```
+
+4. http://localhost:8080 にアクセス
