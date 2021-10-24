@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  laravel:
+    image: thecodingmachine/php:8.0-v4-apache
+    ports:
+        - '${APP_PORT:-8080}:80'
+    environment:
+        PHP_EXTENSIONS: bcmath gd intl pdo_pgsql pgsql
+        PHP_INI_MEMORY_LIMIT: 512M
+        PHP_INI_DATE__TIMEZONE: Asia/Tokyo
+        PHP_INI_MBSTRING__LANGUAGE: Japanese
+        APACHE_DOCUMENT_ROOT: /var/www/html/public
+    volumes:
+        - '.:/var/www/html'
+    extra_hosts:
+        - '${VITE_HOST:-host.docker.internal}:host-gateway'
+  mysql:
+    image: mysql:5.7
+    platform: linux/x86_64
+    ports:
+      - '${MYSQL_PORT:-3306}:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD:-password}'
+      MYSQL_DATABASE: '${DB_DATABASE:-db}'
+      MYSQL_USER: '${DB_USERNAME:-sail}'
+      MYSQL_PASSWORD: '${DB_PASSWORD:-password}'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD:-password}"]
+      retries: 3
+      timeout: 5s
