@@ -10,5 +10,5 @@ const App: React.VFC = () => {
 
 ReactDOM.render(
     <App />,
-    document.getElementById('app')
+    document.getElementById('app'),
 )
