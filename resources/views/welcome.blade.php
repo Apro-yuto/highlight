@@ -6,6 +6,8 @@
         <title>Laravel</title>
     </head>
     <body class="antialiased">
+      <div id="app"></div>
+      @react
       @vite
     </body>
 </html>
