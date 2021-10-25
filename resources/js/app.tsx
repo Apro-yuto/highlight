@@ -4,11 +4,10 @@ import '../sass/app.scss'
 
 const App: React.VFC = () => {
   return (
-    <h1>TEST<span>TEST</span></h1>
+    <h1>
+      TEST<span>TEST</span>
+    </h1>
   )
 }
 
-ReactDOM.render(
-    <App />,
-    document.getElementById('app'),
-)
+ReactDOM.render(<App />, document.getElementById('app'))
