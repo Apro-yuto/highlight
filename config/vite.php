@@ -48,7 +48,7 @@ return [
     | https://laravel-vite.innocenzi.dev/guide/configuration.html#ping-timeout
     */
     'ping_timeout' => 10,
-    'ping_url' => null,
+    'ping_url'     => null,
 
     /*
     |--------------------------------------------------------------------------
