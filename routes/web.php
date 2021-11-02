@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [HomeController::class, 'show']);
+Route::get('/reg', function () {
+    return Inertia::render('Reg/Index', ['data' => ['yuto', 'hayashi', 'shu', 'sakadume', 'oowada']]);
 });
