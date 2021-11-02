@@ -1,7 +1,10 @@
 import React from 'react'
 import WorkerList from '@/js/components/Example'
 
-const Reg:React.VFC = (props) => {
+interface Props {
+  data: Array<string>
+}
+const Reg:React.VFC<Props> = (props) => {
   return (
     <>
       <WorkerList workerArr={props.data} />
