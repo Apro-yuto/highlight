@@ -37,7 +37,7 @@ echo "alias run='./Taskfile'" >> ~/.zshrc
 # .env ファイルを準備
 [highlight] $ cp .env.example .env
 [highlight] $ run artisan key:generate
-[highlight] $ run artisan migrate --seed
+[highlight] $ run artisan migrate
 ```
 
 # マイグレーションを実行
