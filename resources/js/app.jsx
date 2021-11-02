@@ -8,10 +8,9 @@ const pages = import.meta.glob('./Pages/**/*.tsx')
 render(
   <InertiaApp
     initialPage={JSON.parse(app.dataset.page)}
-    resolveComponent={
-      name => pages[`./Pages/${name}.tsx`]()
-        .then(module => module.default)
+    resolveComponent={(name) =>
+      pages[`./Pages/${name}.tsx`]().then((module) => module.default)
     }
   />,
-  app,
+  app
 )
