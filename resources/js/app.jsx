@@ -13,5 +13,5 @@ render(
         .then(module => module.default)
     }
   />,
-  app
+  app,
 )

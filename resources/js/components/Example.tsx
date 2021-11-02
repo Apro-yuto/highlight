@@ -1,8 +1,8 @@
 import React from 'react'
 
-const WorkerList: React.VFC = (props: Object) => {
+const WorkerList: React.VFC = (props) => {
   const ListDOM = props.workerArr.map((item: String, id: number) =>
-    <li key={id}>{item}</li>
+    <li key={id}>{item}</li>,
   )
 
   return (
