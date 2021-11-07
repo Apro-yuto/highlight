@@ -40,7 +40,8 @@ echo "alias run='./Taskfile'" >> ~/.zshrc
 ```
 .env.testingを以下のように編集してください
 
-> DB_DATABASE=laravel_testing<br />
+> APP_KEY=(ここはenvファイルのをコピペしてください。)<br />
+DB_DATABASE=laravel_testing<br />
 DB_USERNAME=deployer<br />
 DB_PASSWORD=password
 
@@ -54,6 +55,7 @@ mysql> GRANT ALL ON laravel_testing.* TO deployer;
 
 [highlight] $ run artisan key:generate
 [highlight] $ run artisan migrate
+[highlight] $ run artisan migrate --env=testing
 ```
 
 # マイグレーションを実行
