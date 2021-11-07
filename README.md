@@ -36,8 +36,16 @@ echo "alias run='./Taskfile'" >> ~/.zshrc
 
 # .env ファイルを準備
 [highlight] $ cp .env.example .env
-[highlight] $ docker compose exec mysql bash
+[highlight] $ cp .env.testing .env
+```
+.env.testingを以下のように編集してください
 
+> DB_DATABASE=laravel_testing<br />
+DB_USERNAME=deployer<br />
+DB_PASSWORD=password
+
+```bash
+[highlight] $ docker compose exec mysql bash
 [highlight] $ mysql -p
 
 ## テスト用のDBを作成
