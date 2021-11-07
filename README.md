@@ -36,6 +36,14 @@ echo "alias run='./Taskfile'" >> ~/.zshrc
 
 # .env ファイルを準備
 [highlight] $ cp .env.example .env
+[highlight] $ docker compose exec mysql bash
+
+[highlight] $ mysql -p
+
+## テスト用のDBを作成
+mysql> CREATE DATABASE laravel_testing;
+mysql> GRANT ALL ON laravel_testing.* TO deployer;
+
 [highlight] $ run artisan key:generate
 [highlight] $ run artisan migrate
 ```
