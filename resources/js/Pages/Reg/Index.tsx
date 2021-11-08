@@ -11,17 +11,13 @@ interface Props {
 const Reg: React.VFC<Props> = (props) => {
   return (
     <>
-      <InertiaLink
-        href="/logout"
-        as="button"
-        method="POST">
+      <InertiaLink href="/logout" as="button" method="POST">
         LOGOUT
       </InertiaLink>
       {props.user.name}
       <WorkerList workerArr={props.data} />
     </>
   )
-
 }
 
 export default Reg
