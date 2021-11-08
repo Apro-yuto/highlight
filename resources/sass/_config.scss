@@ -1,0 +1,74 @@
+// 定数を読みこむ
+@import '_constant';
+
+// 全体共通のスタイルを管理
+@mixin pc {
+  @media screen and (min-width: 751px) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media screen and (max-width: 750px) {
+    @content;
+  }
+}
+
+@function vw($px) {
+  @return $px /  $pc-size * 100vw;
+}
+
+@function vwsp($px) {
+  @return $px / $sp-size * 100vw;
+}
+
+.forSp {
+  @include pc {
+    display: none!important;
+  }
+}
+.forPc {
+  @include sp {
+    display: none!important;
+  }
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+body {
+  min-width: 900px;
+}
+
+.clear {
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+
+%btn {
+  border: 1px solid $BASE;
+  color: darken( $BASE, 25% );
+  border-radius: 1.1em;
+  display: block;
+  padding: .7em 1.1em;
+  transition: all .3s;
+  margin-left: auto;
+  margin-top: 30px;
+  &:hover {
+    color: $WHITE;
+    background-color: $BASE;
+  }
+}

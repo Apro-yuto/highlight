@@ -1,0 +1,52 @@
+@import '_config';
+
+.login {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  &_left, &_right {
+    width: 50%;
+    min-height: 100vh;
+    position: relative;
+  }
+  &_logo {
+    width: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  &_right {
+    background-color: $BASE;
+  }
+  &_form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    margin: 0 auto;
+    background-color: $WHITE;
+    border-radius: 0.5em;
+    @include pc {
+      width: 500px;
+      padding: 25px 35px;
+    }
+    form {
+      width: 100%;
+    }
+  }
+  input {
+    width: 100%;
+    outline: none;
+    padding: .3em .8em;
+    border-bottom: 1px solid $BASE;
+    margin-top: 40px;
+    transition: border-bottom .2s;
+    &:focus {
+      border-bottom: 1px solid darken($BASE, 45%);
+    }
+  }
+  &_submit {
+    @extend %btn;
+  }
+}
