@@ -36,7 +36,7 @@ echo "alias run='./Taskfile'" >> ~/.zshrc
 
 # .env ファイルを準備
 [highlight] $ cp .env.example .env
-[highlight] $ cp .env.testing .env
+[highlight] $ cp .env.example .env.testing
 ```
 .env.testingを以下のように編集してください
 
