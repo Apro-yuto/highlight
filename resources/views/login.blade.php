@@ -5,9 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>HighLight - Login</title>
         <link rel="stylesheet" href="{{asset('reset.css')}}">
-        @vite('resources/sass/login.scss')
     </head>
     <body class="login">
+      @vite
       <div class="login_left">
         <div class="login_logo">
           <img src="{{ asset('logo.png')  }}">
@@ -15,9 +15,23 @@
       </div>
       <div class="login_right">
         <div class="login_form">
-          <form class="login_form-container">
-            <input class="login_email" placeholder="EMAIL" type="email">
-            <input class="login_password" placeholder="PASSWORD" type="password">
+          <form
+            method="POST"
+            action="{{ route('login') }}"
+            class="login_form-container">
+            @csrf
+
+            <input
+              class="login_email"
+              name="email"
+              placeholder="EMAIL"
+              type="email">
+
+            <input
+              class="login_password"
+              name="password"
+              placeholder="PASSWORD"
+              type="password">
 
             @error('password')
               <div>
@@ -25,7 +39,9 @@
               </div>
             @enderror
 
-            <button class="login_submit">LOGIN</button>
+            <button
+              type="submit"
+              class="login_submit">LOGIN</button>
           </form>
         </div>
       </div>
