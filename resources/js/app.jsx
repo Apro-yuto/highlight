@@ -1,6 +1,7 @@
 import { InertiaApp } from '@inertiajs/inertia-react'
 import React from 'react'
 import { render } from 'react-dom'
+import '@/sass/login.scss'
 
 const app = document.getElementById('app')
 const pages = import.meta.glob('./Pages/**/*.tsx')
