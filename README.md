@@ -27,7 +27,7 @@ echo "alias run='./Taskfile'" >> ~/.zshrc
 
 ```bash
 # ↓ コマンドを実行するディレクトリを注意
-[~] $ git clone ssh://git@github.com:Apro-yuto/highlight.git
+[~] $ git clone git@github.com:Apro-yuto/highlight.git
 [~] $ cd highlight
 
 # PHPパッケージをインストール
