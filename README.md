@@ -30,13 +30,26 @@ echo "alias run='./Taskfile'" >> ~/.zshrc
 [~] $ git clone git@github.com:Apro-yuto/highlight.git
 [~] $ cd highlight
 
-# PHPパッケージをインストール
-[highlight] $ run up
-[highlight] $ run composer install
-
 # .env ファイルを準備
 [highlight] $ cp .env.example .env
 [highlight] $ cp .env.example .env.testing
+[highlight] $ php artisan key:generate
+
+# .envと.env.testingの修正
+## .env
+> DB_DATABASE=laravel<br />
+DB_USERNAME=deployer<br />
+DB_PASSWORD=password
+
+# .env.testing
+> APP_KEY=(ここはenvファイルのをコピペしてください。)<br />
+DB_DATABASE=laravel_testing<br />
+DB_USERNAME=deployer<br />
+DB_PASSWORD=password
+
+# PHPパッケージをインストール
+[highlight] $ run up
+[highlight] $ run composer install
 ```
 .env.testingを以下のように編集してください
 
@@ -53,12 +66,11 @@ DB_PASSWORD=password
 mysql> CREATE DATABASE laravel_testing;
 mysql> GRANT ALL ON laravel_testing.* TO deployer;
 
-[highlight] $ run artisan key:generate
 [highlight] $ run artisan migrate
 [highlight] $ run artisan migrate --env=testing
 ```
 
-# マイグレーションを実行
+### マイグレーションを実行
 
 3. JSをセットアップ
 ```
