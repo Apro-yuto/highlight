@@ -27,6 +27,6 @@ Route::middleware('auth')->group(function () {
     })->name('top');
     Route::get('/home', function () {
         return Inertia::render('Home/Index');
-    })->name('top');
+    })->name('home');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
