@@ -25,5 +25,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/reg', function () {
         return Inertia::render('Reg/Index', ['data' => ['yuto', 'hayashi', 'shu', 'sakadume', 'oowada'], 'user' => Auth::user()]);
     })->name('top');
+    Route::get('/home', function () {
+        return Inertia::render('Home/Index');
+    })->name('top');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

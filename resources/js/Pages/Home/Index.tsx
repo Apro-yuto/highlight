@@ -1,8 +1,8 @@
 import React from 'react'
-import '@/sass/Home.scss'
+import styles from '@/sass/Home.module.scss'
 
 const Home: React.VFC = () => {
-  return <p>Home</p>
+  return <p className={styles.test}>Home</p>
 }
 
 export default Home
