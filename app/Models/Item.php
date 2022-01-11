@@ -3,16 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class Item extends Model
 {
-    use HasApiTokens;
     use HasFactory;
-    use Notifiable;
     use SoftDeletes;
 
     /**
@@ -20,7 +16,7 @@ class User extends Authenticatable
      *
      * @var string
      */
-    protected $table = 'users';
+    protected $table = 'items';
 
     /**
      * このモデルが使用するデータベース接続
@@ -35,9 +31,19 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
+        'brand_id',
+        'category_id',
+        'color_id',
+        'label_id',
+        'shop_id',
+        'status_id',
+        'supplier_id',
         'name',
-        'email',
-        'password',
+        'gender',
+        'img_url',
+        'purchase_price',
+        'selling_price',
+        'template',
     ];
 
     /**
@@ -46,16 +52,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
+        'created_at',
+        'updated_at',
     ];
 }
