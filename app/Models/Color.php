@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-use Faker\Provider\ar_SA\Color;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Category extends Model
+class Color extends Model
 {
     use HasFactory;
     use SoftDeletes;
@@ -51,6 +50,6 @@ class Category extends Model
      */
     public function items()
     {
-        return $this->belongsToMany(Color::class, 'color_item', 'color_id', 'item_id');
+        return $this->belongsToMany(Item::class, 'color_item', 'color_id', 'item_id');
     }
 }
