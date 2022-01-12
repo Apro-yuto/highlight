@@ -19,13 +19,6 @@ class ColorItem extends Model
     protected $table = 'color_item';
 
     /**
-     * このモデルが使用するデータベース接続
-     *
-     * @var string
-     */
-    protected $connection = 'mysql';
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var string[]

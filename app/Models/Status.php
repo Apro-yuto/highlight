@@ -19,13 +19,6 @@ class Status extends Model
     protected $table = 'statuses';
 
     /**
-     * このモデルが使用するデータベース接続
-     *
-     * @var string
-     */
-    protected $connection = 'mysql';
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var string[]

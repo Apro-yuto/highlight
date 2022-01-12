@@ -20,13 +20,6 @@ class Item extends Model
     protected $table = 'items';
 
     /**
-     * このモデルが使用するデータベース接続
-     *
-     * @var string
-     */
-    protected $connection = 'mysql';
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var string[]

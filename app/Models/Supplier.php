@@ -19,13 +19,6 @@ class Supplier extends Model
     protected $table = 'suppliers';
 
     /**
-     * このモデルが使用するデータベース接続
-     *
-     * @var string
-     */
-    protected $connection = 'mysql';
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var string[]
