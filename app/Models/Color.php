@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Faker\Provider\ar_SA\Color;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -44,4 +45,12 @@ class Category extends Model
         'created_at',
         'updated_at',
     ];
+
+    /**
+     * itemsを取得
+     */
+    public function items()
+    {
+        return $this->belongsToMany(Color::class, 'color_item', 'color_id', 'item_id');
+    }
 }

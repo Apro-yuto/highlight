@@ -45,4 +45,12 @@ class Lable extends Model
         'created_at',
         'updated_at',
     ];
+
+    /**
+     * itemを取得
+     */
+    public function item()
+    {
+        return $this->belongsTo(Item::class);
+    }
 }

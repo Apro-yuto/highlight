@@ -44,4 +44,12 @@ class Category extends Model
         'created_at',
         'updated_at',
     ];
+
+    /**
+     * itemsを取得
+     */
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
 }
