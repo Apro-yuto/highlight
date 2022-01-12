@@ -78,7 +78,7 @@ class Item extends Model
      */
     public function colors()
     {
-        return $this->belongsToMany(Color::class, 'color_item');
+        return $this->belongsToMany(Color::class, 'color_item', 'item_id', 'color_id');
     }
 
     /**
@@ -86,7 +86,7 @@ class Item extends Model
      */
     public function lable()
     {
-        return $this->belongsTo(Lable::class);
+        return $this->hasOne(Lable::class);
     }
 
     /**
