@@ -24,8 +24,9 @@ class Category extends Model
      * @var string[]
      */
     protected $fillable = [
+        'user_id',
+        'items_id',
         'name',
-        'comment',
     ];
 
     /**
@@ -34,15 +35,24 @@ class Category extends Model
      * @var array
      */
     protected $hidden = [
+        'comment',
         'created_at',
         'updated_at',
     ];
+
+    /**
+     * userを取得
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     /**
      * itemsを取得
      */
     public function items()
     {
-        return $this->hasMany(Item::class);
+        return $this->belongsTo(Item::class);
     }
 }

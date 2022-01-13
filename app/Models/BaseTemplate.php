@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Shop extends Model
+class BaseTemplate extends Model
 {
     use HasFactory;
     use SoftDeletes;
@@ -16,7 +16,7 @@ class Shop extends Model
      *
      * @var string
      */
-    protected $table = 'shops';
+    protected $table = 'base_templates';
 
     /**
      * The attributes that are mass assignable.
@@ -25,8 +25,8 @@ class Shop extends Model
      */
     protected $fillable = [
         'user_id',
-        'items_id',
-        'name',
+        'content_head',
+        'content_end',
     ];
 
     /**
@@ -46,13 +46,5 @@ class Shop extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    /**
-     * itemsを取得
-     */
-    public function items()
-    {
-        return $this->belongsTo(Item::class);
     }
 }

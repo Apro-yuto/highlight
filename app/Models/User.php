@@ -49,4 +49,52 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * itemsを取得
+     */
+    public function items()
+    {
+        return $this->hasMany(User::class);
+    }
+
+    /**
+     * brandsを取得
+     */
+    public function brands()
+    {
+        return $this->hasMany(Brand::class);
+    }
+
+    /**
+     * categoriesを取得
+     */
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
+
+    /**
+     * shopsを取得
+     */
+    public function shops()
+    {
+        return $this->hasMany(Shop::class);
+    }
+
+    /**
+     * suppliersを取得
+     */
+    public function suppliers()
+    {
+        return $this->hasMany(Supplier::class);
+    }
+
+    /**
+     * baseTemplatesを取得
+     */
+    public function baseTemplates()
+    {
+        return $this->hasMany(BaseTemplate::class);
+    }
 }

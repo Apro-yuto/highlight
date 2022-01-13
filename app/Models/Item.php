@@ -25,10 +25,9 @@ class Item extends Model
      * @var string[]
      */
     protected $fillable = [
+        'user_id',
         'brand_id',
-        'category_id',
         'color_id',
-        'label_id',
         'shop_id',
         'status_id',
         'supplier_id',
@@ -38,24 +37,24 @@ class Item extends Model
         'purchase_price',
         'selling_price',
         'template',
-    ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array
-     */
-    protected $hidden = [
         'created_at',
         'updated_at',
     ];
+
+    /**
+     * userを取得
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     /**
      * brandを取得
      */
     public function brand()
     {
-        return $this->belongsTo(Brand::class);
+        return $this->hasOne(Brand::class);
     }
 
     /**
@@ -63,7 +62,7 @@ class Item extends Model
      */
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->hasOne(Category::class);
     }
 
     /**
@@ -77,9 +76,9 @@ class Item extends Model
     /**
      * lableを取得
      */
-    public function lable()
+    public function lables()
     {
-        return $this->hasOne(Lable::class);
+        return $this->hasMany(Lable::class);
     }
 
     /**
@@ -87,7 +86,7 @@ class Item extends Model
      */
     public function shop()
     {
-        return $this->belongsTo(Shop::class);
+        return $this->hasOne(Shop::class);
     }
 
     /**
@@ -95,7 +94,7 @@ class Item extends Model
      */
     public function status()
     {
-        return $this->belongsTo(Status::class);
+        return $this->hasOne(Status::class, 'id', 'status_id');
     }
 
     /**
@@ -103,6 +102,6 @@ class Item extends Model
      */
     public function supplier()
     {
-        return $this->belongsTo(Supplier::class);
+        return $this->hasOne(Supplier::class);
     }
 }
