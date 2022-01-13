@@ -1,0 +1,28 @@
+@import '../_config';
+
+.appBar {
+  width: 100%;
+  background-color: $BASE;
+  color: $BLACK;
+  letter-spacing: .07em;
+}
+
+.title {
+  color: $BLACK;
+  font-size: 20px;
+  font-weight: 100;
+  letter-spacing: .07em;
+}
+
+.icon {
+  @extend %forSp;
+}
+
+.link {
+  @extend %forPc;
+  color: $BLACK;
+  font-size: 14px;
+  letter-spacing: .07em;
+  font-weight: 100;
+  margin-left: auto;
+}
