@@ -15,10 +15,9 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('brand_id');
-            $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('color_id');
-            $table->unsignedBigInteger('label_id');
             $table->unsignedBigInteger('shop_id');
             $table->unsignedBigInteger('status_id')->default(1);
             $table->unsignedBigInteger('supplier_id');

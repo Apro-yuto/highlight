@@ -15,9 +15,10 @@ class CreateShopsTable extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('item_id');
             $table->text('name');
             $table->text('comment')->nullable();
-            $table->text('template')->nullable();
             $table->timestamps();
         });
     }
