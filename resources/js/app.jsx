@@ -11,14 +11,14 @@ render(
   <InertiaApp
     initialPage={JSON.parse(app.dataset.page)}
     resolveComponent={(name) =>
-      pages[`./Pages/${name}.tsx`]()
-        .then((module) => {
-          const pageDefault = module.default
-          
-          if (pageDefault.layout === undefined) pageDefault.layout = page => <Layout>{page}</Layout>
-          return pageDefault
-        })
+      pages[`./Pages/${name}.tsx`]().then((module) => {
+        const pageDefault = module.default
+
+        if (pageDefault.layout === undefined)
+          pageDefault.layout = (page) => <Layout>{page}</Layout>
+        return pageDefault
+      })
     }
   />,
-  app,
+  app
 )
