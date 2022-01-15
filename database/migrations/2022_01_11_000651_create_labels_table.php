@@ -18,6 +18,7 @@ class CreateLabelsTable extends Migration
             $table->unsignedBigInteger('item_id');
             $table->text('name');
             $table->text('content');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

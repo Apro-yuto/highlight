@@ -17,6 +17,7 @@ class CreateColorItemTable extends Migration
             $table->id();
             $table->unsignedBigInteger('color_id');
             $table->unsignedBigInteger('item_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

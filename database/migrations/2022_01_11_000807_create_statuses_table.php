@@ -18,6 +18,7 @@ class CreateStatusesTable extends Migration
             $table->text('name');
             $table->boolean('error_flag')->default(0);
             $table->text('comment')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

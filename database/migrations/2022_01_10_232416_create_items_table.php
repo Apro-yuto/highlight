@@ -27,6 +27,7 @@ class CreateItemsTable extends Migration
             $table->unsignedInteger('purchase_price');
             $table->unsignedInteger('selling_price');
             $table->text('template')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

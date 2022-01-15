@@ -19,6 +19,7 @@ class CreateBaseTemplates extends Migration
             $table->text('content_head')->nullable();
             $table->text('content_end')->nullable();
             $table->text('comment')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
