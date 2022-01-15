@@ -22,7 +22,7 @@ class CreateItemsTable extends Migration
             $table->unsignedBigInteger('status_id')->default(1);
             $table->unsignedBigInteger('supplier_id');
             $table->text('name');
-            $table->unsignedInteger('gender');
+            $table->unsignedTinyInteger('gender');
             $table->text('img_url')->nullable();
             $table->unsignedInteger('purchase_price');
             $table->unsignedInteger('selling_price');
