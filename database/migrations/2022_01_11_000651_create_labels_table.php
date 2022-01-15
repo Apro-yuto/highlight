@@ -15,9 +15,9 @@ class CreateLabelsTable extends Migration
     {
         Schema::create('labels', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('item_id');
-            $table->text('name');
-            $table->text('content');
+            $table->unsignedBigInteger('item_id')->comment('アイテムID');
+            $table->text('name')->comment('ラベル名');
+            $table->text('content')->comment('ラベル内容');
             $table->softDeletes();
             $table->timestamps();
         });

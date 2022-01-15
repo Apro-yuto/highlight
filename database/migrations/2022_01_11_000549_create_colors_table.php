@@ -15,9 +15,9 @@ class CreateColorsTable extends Migration
     {
         Schema::create('colors', function (Blueprint $table) {
             $table->id();
-            $table->text('name');
-            $table->text('code')->nullable();
-            $table->text('comment')->nullable();
+            $table->text('name')->comment('カラー名');
+            $table->text('code')->nullable()->comment('カラーコード');
+            $table->text('comment')->nullable()->comment('カラーコメント');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -15,10 +15,10 @@ class CreateBaseTemplates extends Migration
     {
         Schema::create('base_templates', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->text('content_head')->nullable();
-            $table->text('content_end')->nullable();
-            $table->text('comment')->nullable();
+            $table->unsignedBigInteger('user_id')->comment('ユーザーID');
+            $table->text('content_head')->nullable()->comment('ベーステンプレートヘッダー');
+            $table->text('content_end')->nullable()->comment('ベーステンプレートフッター');
+            $table->text('comment')->nullable()->comment('ベーステンプレートコメント');
             $table->softDeletes();
             $table->timestamps();
         });

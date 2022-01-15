@@ -15,8 +15,8 @@ class CreateColorItemTable extends Migration
     {
         Schema::create('color_item', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('color_id');
-            $table->unsignedBigInteger('item_id');
+            $table->unsignedBigInteger('color_id')->comment('カラーID');
+            $table->unsignedBigInteger('item_id')->comment('アイテムID');
             $table->softDeletes();
             $table->timestamps();
         });

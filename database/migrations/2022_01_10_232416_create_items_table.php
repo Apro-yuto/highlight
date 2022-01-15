@@ -15,18 +15,18 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('brand_id');
-            $table->unsignedBigInteger('color_id');
-            $table->unsignedBigInteger('shop_id');
-            $table->unsignedBigInteger('status_id')->default(1);
-            $table->unsignedBigInteger('supplier_id');
-            $table->text('name');
-            $table->unsignedTinyInteger('gender');
-            $table->text('img_url')->nullable();
-            $table->unsignedInteger('purchase_price');
-            $table->unsignedInteger('selling_price');
-            $table->text('template')->nullable();
+            $table->unsignedBigInteger('user_id')->comment('ユーザーID');
+            $table->unsignedBigInteger('brand_id')->comment('ブランドID');
+            $table->unsignedBigInteger('color_id')->comment('カラーID');
+            $table->unsignedBigInteger('shop_id')->comment('ショップID');
+            $table->unsignedBigInteger('status_id')->default(1)->comment('ステータスID');
+            $table->unsignedBigInteger('supplier_id')->comment('サプライヤーID');
+            $table->text('name')->comment('アイテム名');
+            $table->unsignedTinyInteger('gender')->comment('性別');
+            $table->text('img_url')->nullable()->comment('画像URL');
+            $table->unsignedInteger('purchase_price')->comment('仕入れ値');
+            $table->unsignedInteger('selling_price')->comment('売値');
+            $table->text('template')->nullable()->comment('テンプレート文章');
             $table->softDeletes();
             $table->timestamps();
         });

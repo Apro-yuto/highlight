@@ -15,9 +15,9 @@ class CreateStatusesTable extends Migration
     {
         Schema::create('statuses', function (Blueprint $table) {
             $table->id();
-            $table->text('name');
-            $table->boolean('error_flag')->default(0);
-            $table->text('comment')->nullable();
+            $table->text('name')->comment('ステータス名');
+            $table->boolean('error_flag')->default(0)->comment('ステータスエラーフラグ');
+            $table->text('comment')->nullable()->comment('ステータスコメント');
             $table->softDeletes();
             $table->timestamps();
         });

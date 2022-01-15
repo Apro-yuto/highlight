@@ -15,10 +15,10 @@ class CreateSuppliersTable extends Migration
     {
         Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('item_id');
-            $table->text('name');
-            $table->text('comment')->nullable();
+            $table->unsignedBigInteger('user_id')->comment('ユーザーID');
+            $table->unsignedBigInteger('item_id')->comment('アイテムID');
+            $table->text('name')->comment('サプライヤーID');
+            $table->text('comment')->nullable()->comment('サプライヤーコメント');
             $table->softDeletes();
             $table->timestamps();
         });
