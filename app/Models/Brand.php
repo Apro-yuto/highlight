@@ -27,6 +27,7 @@ class Brand extends Model
         'user_id',
         'item_id',
         'name',
+        'comment',
     ];
 
     /**
@@ -35,7 +36,6 @@ class Brand extends Model
      * @var array
      */
     protected $hidden = [
-        'comment',
         'created_at',
         'updated_at',
     ];

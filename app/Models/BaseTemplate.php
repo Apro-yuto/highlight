@@ -27,6 +27,7 @@ class BaseTemplate extends Model
         'user_id',
         'content_head',
         'content_end',
+        'comment',
     ];
 
     /**
@@ -35,7 +36,6 @@ class BaseTemplate extends Model
      * @var array
      */
     protected $hidden = [
-        'comment',
         'created_at',
         'updated_at',
     ];

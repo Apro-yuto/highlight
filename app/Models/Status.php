@@ -26,6 +26,7 @@ class Status extends Model
     protected $fillable = [
         'name',
         'error_flag',
+        'comment',
     ];
 
     /**
@@ -34,7 +35,6 @@ class Status extends Model
      * @var array
      */
     protected $hidden = [
-        'comment',
         'created_at',
         'updated_at',
     ];

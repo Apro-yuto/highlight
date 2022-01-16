@@ -27,6 +27,7 @@ class Supplier extends Model
         'user_id',
         'item_id',
         'name',
+        'comment',
     ];
 
     /**
@@ -35,7 +36,6 @@ class Supplier extends Model
      * @var array
      */
     protected $hidden = [
-        'comment',
         'created_at',
         'updated_at',
     ];

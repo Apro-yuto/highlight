@@ -26,6 +26,7 @@ class Color extends Model
     protected $fillable = [
         'name',
         'code',
+        'comment',
     ];
 
     /**
@@ -34,7 +35,6 @@ class Color extends Model
      * @var array
      */
     protected $hidden = [
-        'comment',
         'created_at',
         'updated_at',
     ];

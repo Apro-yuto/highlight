@@ -27,6 +27,7 @@ class Shop extends Model
         'user_id',
         'items_id',
         'name',
+        'comment',
     ];
 
     /**
@@ -35,7 +36,6 @@ class Shop extends Model
      * @var array
      */
     protected $hidden = [
-        'comment',
         'created_at',
         'updated_at',
     ];
