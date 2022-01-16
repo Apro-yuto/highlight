@@ -1,6 +1,5 @@
 import React from 'react'
 import WorkerList from '@/js/components/Example'
-import { InertiaLink } from '@inertiajs/inertia-react'
 
 interface Props {
   data: Array<string>
@@ -11,10 +10,7 @@ interface Props {
 const Reg: React.VFC<Props> = (props) => {
   return (
     <>
-      <InertiaLink href="/logout" as="button" method="POST">
-        LOGOUT
-      </InertiaLink>
-      {props.user.name}
+      <p>{props.user.name}</p>
       <WorkerList workerArr={props.data} />
     </>
   )
