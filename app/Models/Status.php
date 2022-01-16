@@ -23,20 +23,10 @@ class Status extends Model
      *
      * @var string[]
      */
-    protected $fillable = [
+    protected $guarded = [
         'name',
         'error_flag',
         'comment',
-    ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'created_at',
-        'updated_at',
     ];
 
     /**
