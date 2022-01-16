@@ -19,7 +19,6 @@ class CreateStatusesTable extends Migration
             $table->boolean('error_flag')->default(0)->comment('ステータスエラーフラグ');
             $table->text('comment')->nullable()->comment('ステータスコメント');
             $table->softDeletes();
-            $table->timestamps();
         });
     }
 
