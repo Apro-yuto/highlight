@@ -2,6 +2,7 @@
 
 .appBar {
   width: 100%;
+  padding: .5rem 0;
   background-color: $BASE;
   color: $BLACK;
   letter-spacing: .07em;
@@ -23,6 +24,7 @@
   color: $BLACK;
   font-size: 14px;
   letter-spacing: .07em;
+  line-height: 1.0;
   font-weight: 100;
-  margin-left: auto;
 }
+

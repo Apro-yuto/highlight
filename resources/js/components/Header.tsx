@@ -14,12 +14,12 @@ const Header: React.VFC = () => {
       <AppBar position="static">
         <Toolbar className={Styles.appBar} variant="dense">
           <Button>
-            <Link className={Styles.title} href="/reg" as="a">
+            <a className={Styles.title} href="/reg">
               HIGHLIGHT
-            </Link>
+            </a>
           </Button>
           <Button sx={{ ml: 'auto' }}>
-            <Link className={Styles.link} href="/logout" as="a" method="POST">
+            <Link className={Styles.link} as="p" href="/logout" method="post">
               LOGOUT
             </Link>
           </Button>
