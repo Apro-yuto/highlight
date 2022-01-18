@@ -16,10 +16,10 @@ class CreatePersonalAccessTokensTable extends Migration
         Schema::create('personal_access_tokens', function (Blueprint $table) {
             $table->id();
             $table->morphs('tokenable');
-            $table->string('name');
-            $table->string('token', 64)->unique();
-            $table->text('abilities')->nullable();
-            $table->timestamp('last_used_at')->nullable();
+            $table->string('name')->comment('apiアクセス認証用トークン名');
+            $table->string('token', 64)->unique()->comment('apiアクセス認証用トークン');
+            $table->text('abilities')->nullable()->comment('権限の設定値');
+            $table->timestamp('last_used_at')->nullable()->comment('apiアクセス認証用トークン更新日時');
             $table->timestamps();
         });
     }
