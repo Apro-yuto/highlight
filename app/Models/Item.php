@@ -38,7 +38,7 @@ class Item extends Model
         'template',
     ];
 
-     /**
+    /**
      * The attributes that should be hidden for serialization.
      *
      * @var array
