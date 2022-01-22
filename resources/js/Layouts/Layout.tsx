@@ -7,7 +7,7 @@ import Sidemenu from '@/js/components/Sidemenu'
 const Layout: React.VFC<{ children: ReactNode }> = ({ children }) => {
   const [isOpen, toggleIsOpen]: [
     boolean,
-    React.Dispatch<React.SetStateAction<boolean>>
+    React.Dispatch<React.SetStateAction<boolean>>,
   ] = useState<boolean>(false)
 
   return (

@@ -20,5 +20,5 @@ render(
       })
     }
   />,
-  app
+  app,
 )
