@@ -2,6 +2,7 @@ import React from 'react'
 import LocalMallIcon from '@mui/icons-material/LocalMall'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { SidemenuLinks, SidemenuOptions } from '@/js/Types/Layout/Sidemenu'
+import { Method } from '@inertiajs/inertia'
 
 export const sidemenuLinks: SidemenuLinks[] = [
   {
@@ -15,7 +16,7 @@ export const sidemenuOptions: SidemenuOptions[] = [
   {
     name: 'ログアウト',
     url: '/logout',
-    method: 'post',
+    method: Method.POST,
     icon: <LogoutIcon />,
   },
 ]
