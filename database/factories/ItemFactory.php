@@ -27,11 +27,8 @@ class ItemFactory extends Factory
     {
         return [
             'user_id'        => User::factory(),
-            'brand_id'       => Brand::factory(),
             'color_id'       => 1,
-            'shop_id'        => Shop::factory(),
             'status_id'      => 1,
-            'supplier_id'    => Supplier::factory(),
             'name'           => $this->faker->name(),
             'gender'         => 1,
             'img_url'        => 'http://placehold.it/300',
