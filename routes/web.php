@@ -22,10 +22,10 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [AuthController::class, 'login'])->name('login');
 });
 Route::middleware('auth')->group(function () {
-    Route::group([  'prefix' => 'item', 'as' => 'item.'  ], function () {
+    Route::group(['prefix' => 'item', 'as' => 'item.'], function () {
         Route::get('/', function () {
             return Inertia::render('Item/Index', ['data' => ['yuto', 'hayashi', 'shu', 'sakadume', 'oowada'], 'user' => Auth::user()]);
-        })->name('index');;
+        })->name('index');
     });
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
