@@ -26,7 +26,7 @@ class CategoryFactory extends Factory
         return [
             'user_id' => User::factory(),
             'item_id' => Item::factory(),
-            'name'    => $this->faker->name(),
+            'name'    => $this->faker->text(10),
             'comment' => $this->faker->text(20),
         ];
     }

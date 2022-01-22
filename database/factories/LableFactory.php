@@ -24,7 +24,7 @@ class LableFactory extends Factory
     {
         return [
             'item_id' => Item::factory(),
-            'name'    => $this->faker->name(),
+            'name'    => $this->faker->text(10),
             'content' => $this->faker->text(20),
         ];
     }
