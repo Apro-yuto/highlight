@@ -16,7 +16,7 @@ class Color extends Model
      *
      * @var string
      */
-    protected $table = 'color';
+    protected $table = 'colors';
 
     /**
      * The attributes that are mass assignable.
