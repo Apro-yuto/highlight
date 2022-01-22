@@ -2,15 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Brand;
 use App\Models\Item;
-use App\Models\Shop;
-use App\Models\Supplier;
-use App\Models\User;
+use App\Traits\GetRandIds;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ItemFactory extends Factory
 {
+    use GetRandIds;
     /**
      * The name of the factory's corresponding model.
      *
@@ -26,11 +24,11 @@ class ItemFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'        => User::factory(),
-            'color_id'       => 1,
-            'status_id'      => 1,
+            'user_id'        => 1,
+            'color_id'       => $this->getRandColorId(),
+            'status_id'      => $this->getRandStatusId(),
             'name'           => $this->faker->name(),
-            'gender'         => 1,
+            'gender'         => mt_rand(0, 2),
             'img_url'        => 'http://placehold.it/300',
             'purchase_price' => mt_rand(0, 1000000),
             'selling_price'  => mt_rand(0, 1000000),
