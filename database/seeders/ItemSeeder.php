@@ -22,7 +22,7 @@ class ItemSeeder extends Seeder
 
         for ($i = 1; $i <= $seederCounts; ++$i) {
             Item::factory()->create([
-               'user_id' => $this->getRandUserId(),
+               'user_id' => 1,
            ]);
         }
     }

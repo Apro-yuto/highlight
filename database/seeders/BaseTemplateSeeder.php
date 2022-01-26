@@ -14,11 +14,8 @@ class BaseTemplateSeeder extends Seeder
      */
     public function run()
     {
-        // user_idを都度指定する
-        $userId = 1;
-
         BaseTemplate::factory()->create([
-           'user_id' => $userId,
-       ]);
+           'user_id' => 1,
+        ]);
     }
 }

@@ -22,7 +22,7 @@ class BrandSeeder extends Seeder
 
         for ($i = 1; $i <= $seederCounts; ++$i) {
             Brand::factory()->create([
-               'user_id' => $this->getRandUserId(),
+               'user_id' => 1,
                'item_id' => $this->getRandItemId(),
            ]);
         }
