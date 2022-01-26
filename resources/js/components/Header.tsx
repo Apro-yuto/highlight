@@ -14,7 +14,7 @@ const Header: React.VFC<{ toggleIsOpen: () => void }> = ({ toggleIsOpen }) => {
     >
       <Toolbar className={Styles.appBar} variant="dense">
         <Button sx={{ padding: '0 1rem' }}>
-          <a className={Styles.title} href="/reg">
+          <a className={Styles.title} href="/item">
             HIGHLIGHT
           </a>
         </Button>

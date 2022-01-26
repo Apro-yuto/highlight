@@ -36,7 +36,7 @@ class AuthTest extends TestCase
             'password' => 'password',
         ];
 
-        $this->post('/login', $data)->assertRedirect(route('top'));
+        $this->post('/login', $data)->assertRedirect(route('item.index'));
     }
 
     /**
@@ -67,7 +67,7 @@ class AuthTest extends TestCase
         $this->actingAs($user);
         $this->assertAuthenticated();
 
-        $this->get('/login')->assertRedirect(route('top'));
+        $this->get('/login')->assertRedirect(route('item.index'));
     }
 
     /**
@@ -79,6 +79,6 @@ class AuthTest extends TestCase
     {
         $this->assertGuest();
 
-        $this->get(route('top'))->assertRedirect('/login');
+        $this->get(route('item.index'))->assertRedirect('/login');
     }
 }
