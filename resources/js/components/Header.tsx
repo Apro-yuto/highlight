@@ -14,7 +14,7 @@ const Header: React.VFC = () => {
       <AppBar position="static">
         <Toolbar className={Styles.appBar} variant="dense">
           <Button>
-            <a className={Styles.title} href="/reg">
+            <a className={Styles.title} href="/item">
               HIGHLIGHT
             </a>
           </Button>
