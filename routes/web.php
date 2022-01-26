@@ -26,6 +26,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/', function () {
             return Inertia::render('Item/Index', ['data' => ['yuto', 'hayashi', 'shu', 'sakadume', 'oowada'], 'user' => Auth::user()]);
         })->name('index');
+        Route::get('/detail/{item_id}', function ($item_id) {
+            return '/detail/' . $item_id;
+        })->name('detail');
     });
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
