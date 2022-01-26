@@ -22,11 +22,11 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [AuthController::class, 'login'])->name('login');
 });
 Route::middleware('auth')->group(function () {
-    Route::get('/reg', function () {
-        return Inertia::render('Reg/Index', ['data' => ['yuto', 'hayashi', 'shu', 'sakadume', 'oowada'], 'user' => Auth::user()]);
-    })->name('top');
-    Route::get('/home', function () {
-        return Inertia::render('Home/Index');
-    })->name('home');
+    Route::group(['prefix' => 'item', 'as' => 'item.'], function () {
+        Route::get('/', function () {
+            return Inertia::render('Item/Index', ['data' => ['yuto', 'hayashi', 'shu', 'sakadume', 'oowada'], 'user' => Auth::user()]);
+        })->name('index');
+    });
+
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
