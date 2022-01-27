@@ -3,27 +3,25 @@
 namespace Database\Seeders;
 
 use App\Models\Lable;
-use App\Traits\GetRandIds;
 use Illuminate\Database\Seeder;
 
 class LableSeeder extends Seeder
 {
-    use GetRandIds;
-
     /**
      * Seed the application's database.
-     *
+     * itemsテーブルに対していくつでも紐づく前提
      * @return void
      */
     public function run()
     {
-        // 作成するseederの数（factoryの中に数を書くと同じものが10個入るため変数を指定）
-        $seederCounts = 10;
+        // itemIdの指定
+        $itemId = 1;
 
-        for ($i = 1; $i <= $seederCounts; ++$i) {
-            Lable::factory()->create([
-               'item_id' => $this->getRandItemId(),
-           ]);
-        }
+        // 作成するlabelの数、item　　1:多なのでいくつ作っても良い。
+        $labelCounts = 5;
+
+        Lable::factory($labelCounts)->create([
+            'item_id' => $itemId,
+        ]);
     }
 }

@@ -3,28 +3,30 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
-use App\Traits\GetRandIds;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
 {
-    use GetRandIds;
-
     /**
      * Seed the application's database.
-     *
+     * itemsテーブルに対して1つしか紐づかない前提
      * @return void
      */
     public function run()
     {
-        // 作成するseederの数（factoryの中に数を書くと同じものが10個入るため変数を指定）
-        $seederCounts = 10;
+        // itemIdの指定
+        $itemId = 1;
 
-        for ($i = 1; $i <= $seederCounts; ++$i) {
+        $Categories = Category::all()->pluck('item_id')->toArray();
+
+        if (!in_array($itemId, $Categories)) {
             Category::factory()->create([
-               'user_id' => 1,
-               'item_id' => $this->getRandItemId(),
-           ]);
+                'user_id' => 1,
+                'item_id' => $itemId,
+            ]);
+        } else {
+            echo 'item_idが重複しているので、修正してください。';
+            exit();
         }
     }
 }
