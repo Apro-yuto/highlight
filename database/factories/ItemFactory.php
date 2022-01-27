@@ -33,7 +33,7 @@ class ItemFactory extends Factory
             'user_id'        => 1,
             'color_id'       => $colorIds[$colorKey],
             'status_id'      => $statuses[$statusKey],
-            'name'           => $this->faker->name(),
+            'name'           => $this->faker->text(10),
             'gender'         => mt_rand(0, 2),
             'img_url'        => 'http://placehold.it/300',
             'purchase_price' => mt_rand(0, 1000000),
