@@ -16,11 +16,8 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->comment('ユーザーID');
-            $table->unsignedBigInteger('brand_id')->comment('ブランドID')->nullable();
             $table->unsignedBigInteger('color_id')->comment('カラーID')->nullable();
-            $table->unsignedBigInteger('shop_id')->comment('ショップID')->nullable();
             $table->unsignedBigInteger('status_id')->default(1)->comment('ステータスID');
-            $table->unsignedBigInteger('supplier_id')->comment('サプライヤーID')->nullable();
             $table->text('name')->comment('アイテム名');
             $table->unsignedTinyInteger('gender')->comment('性別');
             $table->text('img_url')->nullable()->comment('画像URL');
