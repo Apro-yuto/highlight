@@ -19,13 +19,13 @@ class ShopSeeder extends Seeder
         $shopIds = Shop::all()->pluck('item_id')->toArray();
 
         foreach ($itemIds as $itemId) {
-            if(!in_array($itemId, $shopIds)) {
+            if (!in_array($itemId, $shopIds)) {
                 Shop::factory()->create([
                     'user_id' => 1,
                     'item_id' => $itemId,
                 ]);
             } else {
-                echo 'item_id'.$itemId.'が重複しています。';
+                echo 'item_id' . $itemId . 'が重複しています。';
             }
         }
     }

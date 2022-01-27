@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Item;
 use App\Models\Brand;
+use App\Models\Item;
 use Illuminate\Database\Seeder;
 
 class BrandSeeder extends Seeder
@@ -15,17 +15,17 @@ class BrandSeeder extends Seeder
      */
     public function run()
     {
-        $itemIds = Item::all()->pluck('id')->toArray();
+        $itemIds  = Item::all()->pluck('id')->toArray();
         $brandIds = Brand::all()->pluck('item_id')->toArray();
 
         foreach ($itemIds as $itemId) {
-            if(!in_array($itemId, $brandIds)) {
+            if (!in_array($itemId, $brandIds)) {
                 Brand::factory()->create([
                     'user_id' => 1,
                     'item_id' => $itemId,
                 ]);
             } else {
-                echo 'item_id'.$itemId.'が重複しています。';
+                echo 'item_id' . $itemId . 'が重複しています。';
             }
         }
     }
