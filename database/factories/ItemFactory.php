@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Color;
 use App\Models\Item;
-use App\Traits\GetRandIds;
+use App\Models\Status;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ItemFactory extends Factory
 {
-    use GetRandIds;
     /**
      * The name of the factory's corresponding model.
      *
@@ -23,10 +23,16 @@ class ItemFactory extends Factory
      */
     public function definition()
     {
+        $colorIds = Color::all()->pluck('id')->toArray();
+        $colorKey = array_rand($colorIds, 1);
+
+        $statuses  = Status::all()->pluck('id')->toArray();
+        $statusKey = array_rand($statuses, 1);
+
         return [
             'user_id'        => 1,
-            'color_id'       => $this->getRandColorId(),
-            'status_id'      => $this->getRandStatusId(),
+            'color_id'       => $colorIds[$colorKey],
+            'status_id'      => $statuses[$statusKey],
             'name'           => $this->faker->name(),
             'gender'         => mt_rand(0, 2),
             'img_url'        => 'http://placehold.it/300',
