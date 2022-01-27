@@ -15,11 +15,11 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $itemIds     = Item::all()->pluck('id')->toArray();
-        $categoryIds = Category::all()->pluck('item_id')->toArray();
+        $itemIds         = Item::all()->pluck('id')->toArray();
+        $categoryItemIds = Category::all()->pluck('item_id')->toArray();
 
         foreach ($itemIds as $itemId) {
-            if (!in_array($itemId, $categoryIds)) {
+            if (!in_array($itemId, $categoryItemIds)) {
                 Category::factory()->create([
                     'user_id' => 1,
                     'item_id' => $itemId,

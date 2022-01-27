@@ -15,11 +15,11 @@ class SupplierSeeder extends Seeder
      */
     public function run()
     {
-        $itemIds     = Item::all()->pluck('id')->toArray();
-        $supplierIds = Supplier::all()->pluck('item_id')->toArray();
+        $itemIds        = Item::all()->pluck('id')->toArray();
+        $supplierItemds = Supplier::all()->pluck('item_id')->toArray();
 
         foreach ($itemIds as $itemId) {
-            if (!in_array($itemId, $supplierIds)) {
+            if (!in_array($itemId, $supplierItemds)) {
                 Supplier::factory()->create([
                     'user_id' => 1,
                     'item_id' => $itemId,

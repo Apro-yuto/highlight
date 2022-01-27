@@ -15,11 +15,11 @@ class BrandSeeder extends Seeder
      */
     public function run()
     {
-        $itemIds  = Item::all()->pluck('id')->toArray();
-        $brandIds = Brand::all()->pluck('item_id')->toArray();
+        $itemIds      = Item::all()->pluck('id')->toArray();
+        $brandItemIds = Brand::all()->pluck('item_id')->toArray();
 
         foreach ($itemIds as $itemId) {
-            if (!in_array($itemId, $brandIds)) {
+            if (!in_array($itemId, $brandItemIds)) {
                 Brand::factory()->create([
                     'user_id' => 1,
                     'item_id' => $itemId,

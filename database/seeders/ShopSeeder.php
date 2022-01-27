@@ -15,11 +15,11 @@ class ShopSeeder extends Seeder
      */
     public function run()
     {
-        $itemIds = Item::all()->pluck('id')->toArray();
-        $shopIds = Shop::all()->pluck('item_id')->toArray();
+        $itemIds     = Item::all()->pluck('id')->toArray();
+        $shopItemIds = Shop::all()->pluck('item_id')->toArray();
 
         foreach ($itemIds as $itemId) {
-            if (!in_array($itemId, $shopIds)) {
+            if (!in_array($itemId, $shopItemIds)) {
                 Shop::factory()->create([
                     'user_id' => 1,
                     'item_id' => $itemId,
