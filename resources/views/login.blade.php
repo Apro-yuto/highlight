@@ -7,7 +7,8 @@
         <link rel="stylesheet" href="{{asset('reset.css')}}">
     </head>
     <body class="login">
-      @vite
+      @client
+      @vite('resources/sass/login.scss')
       <div class="login_left">
         <div class="login_logo">
           <img src="{{ asset('logo.png')  }}">
