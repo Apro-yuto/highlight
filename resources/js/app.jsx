@@ -5,20 +5,18 @@ import '@/sass/login.scss'
 import Layout from '@/js/Layouts/Layout'
 
 const app = document.getElementById('app')
-const pages = import.meta.glob('./Pages/**/*.tsx')
 
 render(
   <InertiaApp
     initialPage={JSON.parse(app.dataset.page)}
-    resolveComponent={(name) =>
-      pages[`./Pages/${name}.tsx`]().then((module) => {
-        const pageDefault = module.default
+    resolveComponent={async (name) => {
+      const pages = import.meta.glob('./Pages/**/*.tsx')
+      const module = await pages[`./Pages/${name}.tsx`]()
+      const pageDefault = module.default
 
-        if (pageDefault.layout === undefined)
-          pageDefault.layout = (page) => <Layout>{page}</Layout>
-        return pageDefault
-      })
-    }
+      pageDefault.layout = (page) => <Layout>{page}</Layout>
+      return pageDefault
+    }}
   />,
   app,
 )
