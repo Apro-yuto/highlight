@@ -16,7 +16,6 @@ class CreateBrandsTable extends Migration
         Schema::create('brands', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->comment('ユーザーID');
-            $table->unsignedBigInteger('item_id')->comment('アイテムID');
             $table->text('name')->comment('ブランド名');
             $table->text('comment')->nullable()->comment('ブランドコメント');
             $table->softDeletes();

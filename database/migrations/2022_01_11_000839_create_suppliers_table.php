@@ -16,7 +16,6 @@ class CreateSuppliersTable extends Migration
         Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->comment('ユーザーID');
-            $table->unsignedBigInteger('item_id')->comment('アイテムID');
             $table->text('name')->comment('サプライヤーID');
             $table->text('comment')->nullable()->comment('サプライヤーコメント');
             $table->softDeletes();
