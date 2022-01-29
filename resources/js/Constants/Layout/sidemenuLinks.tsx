@@ -7,7 +7,7 @@ import { Method } from '@inertiajs/inertia'
 export const sidemenuLinks: SidemenuLinks[] = [
   {
     name: '商品管理',
-    url: '/reg',
+    url: '/item',
     icon: <LocalMallIcon />,
   },
 ]

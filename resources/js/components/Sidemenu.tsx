@@ -3,6 +3,7 @@ import {
   Drawer,
   List,
   ListItem,
+  ListItemButton,
   ListItemIcon,
   ListItemText,
   Divider,
@@ -13,7 +14,7 @@ import {
   sidemenuLinks,
   sidemenuOptions,
 } from '@/js/Constants/Layout/sidemenuLinks'
-import linkToOptions from '@/js/Partials/Layout/Sidemenu'
+import sidemenuLinkTransition from '@/js/Partials/Layout/Sidemenu'
 import { isBreakePoints } from '@/js/Partials/useGetWindowSize'
 
 // sideMenuをレスポンシブ化した時に使用する属性を変更する - nagashima
@@ -60,9 +61,11 @@ const Sidemenu: React.VFC<{ isOpen: boolean }> = ({ isOpen }) => {
         <Box sx={{ overflow: 'auto' }}>
           <List>
             {sidemenuLinks.map((link, index) => (
-              <ListItem button key={index}>
-                <ListItemIcon>{link.icon}</ListItemIcon>
-                <ListItemText primary={link.name} />
+              <ListItem disablePadding key={index}>
+                <ListItemButton component="a" href={link.url}>
+                  <ListItemIcon>{link.icon}</ListItemIcon>
+                  <ListItemText primary={link.name} />
+                </ListItemButton>
               </ListItem>
             ))}
           </List>
@@ -71,9 +74,14 @@ const Sidemenu: React.VFC<{ isOpen: boolean }> = ({ isOpen }) => {
 
           <List>
             {sidemenuOptions.map((link, index) => (
-              <ListItem button onClick={() => linkToOptions(link)} key={index}>
-                <ListItemIcon>{link.icon}</ListItemIcon>
-                <ListItemText primary={link.name} />
+              <ListItem disablePadding key={index}>
+                <ListItemButton
+                  onClick={() => sidemenuLinkTransition(link)}
+                  key={index}
+                >
+                  <ListItemIcon>{link.icon}</ListItemIcon>
+                  <ListItemText primary={link.name} />
+                </ListItemButton>
               </ListItem>
             ))}
           </List>
