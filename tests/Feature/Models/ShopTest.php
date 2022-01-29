@@ -10,7 +10,7 @@ class ShopTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->shop = Shop::create(['item_id' => 1, 'name' => 'hoge1', 'content' => 'hoge2']);
+        $this->shop = Shop::create(['user_id' => 1, 'item_id' => 1, 'name' => 'hoge1', 'content' => 'hoge2']);
     }
 
     /**
