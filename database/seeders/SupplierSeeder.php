@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Item;
 use App\Models\Supplier;
 use Illuminate\Database\Seeder;
 
@@ -15,18 +14,8 @@ class SupplierSeeder extends Seeder
      */
     public function run()
     {
-        $itemIds        = Item::all()->pluck('id')->toArray();
-        $supplierItemds = Supplier::all()->pluck('item_id')->toArray();
-
-        foreach ($itemIds as $itemId) {
-            if (!in_array($itemId, $supplierItemds)) {
-                Supplier::factory()->create([
-                    'user_id' => 1,
-                    'item_id' => $itemId,
-                ]);
-            } else {
-                echo 'item_id' . $itemId . 'が重複しています。';
-            }
-        }
+        Supplier::factory(10)->create([
+            'user_id' => 1,
+        ]);
     }
 }

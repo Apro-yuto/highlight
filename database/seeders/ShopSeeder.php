@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Item;
 use App\Models\Shop;
 use Illuminate\Database\Seeder;
 
@@ -15,18 +14,8 @@ class ShopSeeder extends Seeder
      */
     public function run()
     {
-        $itemIds     = Item::all()->pluck('id')->toArray();
-        $shopItemIds = Shop::all()->pluck('item_id')->toArray();
-
-        foreach ($itemIds as $itemId) {
-            if (!in_array($itemId, $shopItemIds)) {
-                Shop::factory()->create([
-                    'user_id' => 1,
-                    'item_id' => $itemId,
-                ]);
-            } else {
-                echo 'item_id' . $itemId . 'が重複しています。';
-            }
-        }
+        Shop::factory(10)->create([
+            'user_id' => 1,
+        ]);
     }
 }

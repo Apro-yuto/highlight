@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
-use App\Models\Item;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
@@ -15,18 +14,8 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $itemIds         = Item::all()->pluck('id')->toArray();
-        $categoryItemIds = Category::all()->pluck('item_id')->toArray();
-
-        foreach ($itemIds as $itemId) {
-            if (!in_array($itemId, $categoryItemIds)) {
-                Category::factory()->create([
-                    'user_id' => 1,
-                    'item_id' => $itemId,
-                ]);
-            } else {
-                echo 'item_id' . $itemId . 'が重複しています。';
-            }
-        }
+        Category::factory(10)->create([
+            'user_id' => 1,
+        ]);
     }
 }
