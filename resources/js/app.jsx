@@ -14,7 +14,8 @@ render(
       const module = await pages[`./Pages/${name}.tsx`]()
       const pageDefault = module.default
 
-      pageDefault.layout = (page) => <Layout>{page}</Layout>
+      if (pageDefault.layout === undefined)
+        pageDefault.layout = (page) => <Layout>{page}</Layout>
       return pageDefault
     }}
   />,
