@@ -54,7 +54,7 @@ class Item extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'id', 'user_id');
     }
 
     /**
@@ -86,7 +86,7 @@ class Item extends Model
      */
     public function lables()
     {
-        return $this->hasMany(Lable::class);
+        return $this->hasMany(Lable::class, 'item_id', 'id');
     }
 
     /**

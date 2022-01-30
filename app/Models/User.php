@@ -55,7 +55,7 @@ class User extends Authenticatable
      */
     public function items()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(User::class, 'user_id', 'id');
     }
 
     /**
@@ -63,7 +63,7 @@ class User extends Authenticatable
      */
     public function brands()
     {
-        return $this->hasMany(Brand::class);
+        return $this->hasMany(Brand::class, 'user_id', 'id');
     }
 
     /**
@@ -71,7 +71,7 @@ class User extends Authenticatable
      */
     public function categories()
     {
-        return $this->hasMany(Category::class);
+        return $this->hasMany(Category::class, 'user_id', 'id');
     }
 
     /**
@@ -79,7 +79,7 @@ class User extends Authenticatable
      */
     public function shops()
     {
-        return $this->hasMany(Shop::class);
+        return $this->hasMany(Shop::class, 'user_id', 'id');
     }
 
     /**
@@ -87,7 +87,7 @@ class User extends Authenticatable
      */
     public function suppliers()
     {
-        return $this->hasMany(Supplier::class);
+        return $this->hasMany(Supplier::class, 'user_id', 'id');
     }
 
     /**
@@ -95,6 +95,6 @@ class User extends Authenticatable
      */
     public function baseTemplates()
     {
-        return $this->hasMany(BaseTemplate::class);
+        return $this->hasMany(BaseTemplate::class, 'user_id', 'id');
     }
 }
