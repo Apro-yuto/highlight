@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\BaseTemplate;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BaseTemplateFactory extends Factory
