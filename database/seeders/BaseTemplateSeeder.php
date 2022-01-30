@@ -14,8 +14,6 @@ class BaseTemplateSeeder extends Seeder
      */
     public function run()
     {
-        BaseTemplate::factory()->create([
-           'user_id' => 1,
-        ]);
+        BaseTemplate::factory()->create();
     }
 }

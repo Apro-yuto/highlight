@@ -28,7 +28,6 @@ class ItemSeeder extends Seeder
 
         for ($i = 0; $i < $itemSeedCounts; ++$i) {
             Item::factory()->create([
-                'user_id'     => 1,
                 'brand_id'    => $brandIds[array_rand($brandIds, 1)],
                 'category_id' => $categoryIds[array_rand($categoryIds, 1)],
                 'shop_id'     => $shopIds[array_rand($shopIds, 1)],

@@ -14,8 +14,6 @@ class BrandSeeder extends Seeder
      */
     public function run()
     {
-        Brand::factory(10)->create([
-            'user_id' => 1,
-        ]);
+        Brand::factory(10)->create();
     }
 }

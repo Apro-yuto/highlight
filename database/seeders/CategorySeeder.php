@@ -14,8 +14,6 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::factory(10)->create([
-            'user_id' => 1,
-        ]);
+        Category::factory(10)->create();
     }
 }

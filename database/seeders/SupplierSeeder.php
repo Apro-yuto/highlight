@@ -14,8 +14,6 @@ class SupplierSeeder extends Seeder
      */
     public function run()
     {
-        Supplier::factory(10)->create([
-            'user_id' => 1,
-        ]);
+        Supplier::factory(10)->create();
     }
 }
