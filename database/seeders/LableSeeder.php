@@ -15,11 +15,11 @@ class LableSeeder extends Seeder
     public function run()
     {
         // lableに紐づくitemが　　0,1,2,3のように作成されるように
-        $itemCounts = 4;
+        $itemCounts = 10;
 
         for ($i = 0; $i < $itemCounts; ++$i) {
             Lable::factory($i)->create([
-                'item_id' => $i,
+                'item_id' => $i + 1,
             ]);
         }
     }
