@@ -3,8 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Brand;
-use App\Models\Item;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BrandFactory extends Factory
@@ -24,9 +22,8 @@ class BrandFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(),
-            'item_id' => Item::factory(),
-            'name'    => $this->faker->name(),
+            'user_id' => 1,
+            'name'    => $this->faker->text(10),
             'comment' => $this->faker->text(20),
         ];
     }

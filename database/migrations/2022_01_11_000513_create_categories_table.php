@@ -16,7 +16,6 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->comment('ユーザーID');
-            $table->unsignedBigInteger('item_id')->comment('アイテムID');
             $table->text('name')->comment('カテゴリーID');
             $table->text('comment')->nullable()->comment('カラーコメント');
             $table->softDeletes();

@@ -16,7 +16,6 @@ class CreateShopsTable extends Migration
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->comment('ユーザーID');
-            $table->unsignedBigInteger('item_id')->comment('アイテムID');
             $table->text('name')->comment('ショップ名');
             $table->text('comment')->nullable()->comment('ショップコメント');
             $table->softDeletes();

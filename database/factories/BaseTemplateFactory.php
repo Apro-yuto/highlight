@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\BaseTemplate;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BaseTemplateFactory extends Factory
@@ -23,7 +22,7 @@ class BaseTemplateFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'      => User::factory(),
+            'user_id'      => 1,
             'content_head' => $this->faker->text(100),
             'content_end'  => $this->faker->text(100),
             'comment'      => $this->faker->text(20),
