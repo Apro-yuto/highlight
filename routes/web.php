@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -23,10 +23,7 @@ Route::middleware('guest')->group(function () {
 });
 Route::middleware('auth')->group(function () {
     Route::group(['prefix' => 'item', 'as' => 'item.'], function () {
-        Route::get('/', function () {
-            return Inertia::render('Item/Index', ['data' => ['yuto', 'hayashi', 'shu', 'sakadume', 'oowada'], 'user' => Auth::user()]);
-        })->name('index');
-
+        Route::get('/', [ItemController::class, 'index'])->name('index');
         Route::get('/detail/{item_id}', function ($item_id) {
             return '/detail/' . $item_id;
         })->name('detail.index');
