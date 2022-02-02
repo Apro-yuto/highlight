@@ -10,8 +10,8 @@ class ItemController extends Controller
 {
     public function index(GetItems $action)
     {
-        $data = $action->execute();
-        $user = Auth::user();
+        $user  = Auth::user();
+        $data  = $action->execute($user->id);
         $props = [
             'data' => $data,
             'user' => $user,

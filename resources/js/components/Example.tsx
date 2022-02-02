@@ -4,7 +4,7 @@ interface Props {
   workerArr: Array<string>
 }
 const WorkerList: React.VFC<Props> = (props) => {
-  const ListDOM = props.workerArr.map((item: Object, id: number) => (
+  const ListDOM = props.workerArr.map((item: any, id: number ) => (
     <li key={id}>{item.name}</li>
   ))
 

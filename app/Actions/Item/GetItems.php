@@ -3,14 +3,11 @@
 namespace App\Actions\Item;
 
 use App\Models\Item;
-use Illuminate\Support\Facades\Auth;
 
 class GetItems
 {
-    public function execute()
+    public function execute(int $userId)
     {
-        $user = $user = Auth::user();
-
-        return Item::where('user_id', $user->id)->get();
+        return Item::where('user_id', $userId)->get();
     }
 }
