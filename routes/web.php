@@ -28,7 +28,10 @@ Route::middleware('auth')->group(function () {
         })->name('index');
         Route::get('/detail/{item_id}', function ($item_id) {
             return '/detail/' . $item_id;
-        })->name('detail');
+        })->name('detail.index');
+        Route::put('/detail/{item_id}/edit', function ($item_id) {
+            return '/detail/edit/' . $item_id;
+        })->name('detail.edit');
     });
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
