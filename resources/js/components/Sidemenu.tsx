@@ -54,7 +54,6 @@ const SideMenuWrapper: React.VFC<{ children: ReactNode; isOpen: boolean }> = ({
 const Sidemenu: React.VFC<{ isOpen: boolean }> = ({ isOpen }) => {
   return (
     <>
-      <Toolbar />
       <SideMenuWrapper isOpen={isOpen}>
         <Toolbar />
 
