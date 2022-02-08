@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/detail/{item_id}', function ($item_id) {
             return '/detail/' . $item_id;
-        })->name('detail');
+        })->name('detail.index');
 
         Route::get('/store', function () {
             return '/item/store';
@@ -39,7 +39,6 @@ Route::middleware('auth')->group(function () {
             return '/item/store';
         })->name('store.post');
 
-        })->name('detail.index');
         Route::put('/detail/{item_id}/edit', function ($item_id) {
             return '/detail/edit/' . $item_id;
         })->name('detail.edit');
