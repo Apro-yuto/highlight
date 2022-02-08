@@ -26,9 +26,19 @@ Route::middleware('auth')->group(function () {
         Route::get('/', function () {
             return Inertia::render('Item/Index', ['data' => ['yuto', 'hayashi', 'shu', 'sakadume', 'oowada'], 'user' => Auth::user()]);
         })->name('index');
+
         Route::get('/detail/{item_id}', function ($item_id) {
             return '/detail/' . $item_id;
         })->name('detail.index');
+
+        Route::get('/store', function () {
+            return '/item/store';
+        })->name('store.index');
+
+        Route::post('/store', function () {
+            return '/item/store';
+        })->name('store.post');
+
         Route::put('/detail/{item_id}/edit', function ($item_id) {
             return '/detail/edit/' . $item_id;
         })->name('detail.edit');
