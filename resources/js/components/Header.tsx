@@ -13,10 +13,16 @@ const Header: React.VFC<{ toggleIsOpen: () => void }> = ({ toggleIsOpen }) => {
       sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
     >
       <Toolbar className={Styles.appBar} variant="dense">
-        <Button sx={{ padding: '0 1rem' }}>
-          <a className={Styles.title} href="/item">
-            HIGHLIGHT
-          </a>
+        <Button
+          href="/item"
+          sx={{
+            fontSize: 20,
+            fontWeight: 100,
+            color: 'grey.700',
+            padding: '0 1rem',
+          }}
+        >
+          HIGHLIGHT
         </Button>
         <IconButton
           onClick={toggleIsOpen}
