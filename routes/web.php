@@ -38,6 +38,11 @@ Route::middleware('auth')->group(function () {
         Route::post('/store', function () {
             return '/item/store';
         })->name('store.post');
+
+        })->name('detail.index');
+        Route::put('/detail/{item_id}/edit', function ($item_id) {
+            return '/detail/edit/' . $item_id;
+        })->name('detail.edit');
     });
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
