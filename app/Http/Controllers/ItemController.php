@@ -62,7 +62,7 @@ class ItemController extends Controller
 
     public function update(UpdateItem $action, UpdateItemRequest $request)
     {
-        $action->execute($request->all(), $request->id);
+        $action->execute($request->id, $request->all());
     }
 
     public function destroy(DeleteItem $action, int $id)

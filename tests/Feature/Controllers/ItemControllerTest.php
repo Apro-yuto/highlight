@@ -38,7 +38,7 @@ class ItemControllerTest extends TestCase
         $response = $this->get(route('item.index'));
 
         // レスポンスの検証
-        $response->assertOk()  # ステータスコードが 200
+        $response->assertOk()  // ステータスコードが 200
             ->assertInertia(fn (Assert $page) => $page
                 ->url('/item'));
     }
@@ -50,12 +50,12 @@ class ItemControllerTest extends TestCase
      */
     public function testDetail()
     {
-        $item = Item::factory()->create($this->data);
+        $item     = Item::factory()->create($this->data);
         $response = $this->get(route('item.detail', $item->id));
 
         // レスポンスの検証
         $url = '/item/detail/' . $item->id;
-        $response->assertOk()  # ステータスコードが 200
+        $response->assertOk()  // ステータスコードが 200
             ->assertInertia(fn (Assert $page) => $page
                 ->url($url));
     }
@@ -95,7 +95,7 @@ class ItemControllerTest extends TestCase
         $response = $this->post(route('item.store'), $data);
 
         // レスポンス検証
-        $response->assertOk(); # ステータスコードが 200
+        $response->assertOk(); // ステータスコードが 200
         $storedItem = Item::where('name', 'HogeHoge')->first();
         $this->assertEquals(1, $storedItem->user_id);
         $this->assertEquals(2, $storedItem->gender);
