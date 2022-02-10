@@ -23,11 +23,12 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::group(['prefix' => 'item', 'as' => 'item.'], function () {
         Route::get('/', [ItemController::class, 'index'])->name('index');
-        Route::get('/detail/{item_id}', [ItemController::class, 'detail'])->name('detail');
+        Route::get('/detail/{id}', [ItemController::class, 'detail'])->name('detail');
         Route::get('/create', [ItemController::class, 'create'])->name('create');
+        Route::put('/detail/{id}/edit', [ItemController::class, 'edit'])->name('edit');
         Route::post('/', [ItemController::class, 'store'])->name('store');
-        Route::put('/detail/{item_id}', [ItemController::class, 'update'])->name('update');
-        Route::delete('/detail/{item_id}', [ItemController::class, 'destroy'])->name('destroy');
+        Route::put('/detail/{id}', [ItemController::class, 'update'])->name('update');
+        Route::delete('/detail/{id}', [ItemController::class, 'destroy'])->name('destroy');
     });
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

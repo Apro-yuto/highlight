@@ -6,8 +6,9 @@ use App\Models\Item;
 
 class DeleteItem
 {
-    public function execute(Item $item)
+    public function execute($id)
     {
+        $item = Item::find($id);
         $item->delete();
     }
 }

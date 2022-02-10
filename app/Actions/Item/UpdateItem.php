@@ -6,8 +6,9 @@ use App\Models\Item;
 
 class UpdateItem
 {
-    public function execute(Item $item, array $inputs = []): Item
+    public function execute(array $inputs = [], $id): Item
     {
+        $item = Item::find($id);
         $item->update($inputs);
 
         return $item->refresh();

@@ -10,6 +10,7 @@ use App\Http\Requests\Item\StoreItemRequest;
 use App\Http\Requests\Item\UpdateItemRequest;
 use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class ItemController extends Controller
@@ -29,9 +30,9 @@ class ItemController extends Controller
         );
     }
 
-    public function detail(Item $item)
+    public function detail(int $id)
     {
-        $props = ['Item' => $item];
+        $props = ['item' => Item::find($id)];
 
         return Inertia::render(
             'Item/Detail',
@@ -44,18 +45,30 @@ class ItemController extends Controller
         return Inertia::render('Item/Create');
     }
 
+    public function edit(Item $item)
+    {
+        $props = ['item' => $item];
+
+        return Inertia::render(
+            'Item/Edit',
+            $props
+        );
+    }
+
     public function store(StoreItem $action, StoreItemRequest $request)
     {
         $action->execute($request->all());
     }
 
-    public function update(Item $item, UpdateItem $action, UpdateItemRequest $request)
+    public function update(UpdateItem $action, UpdateItemRequest $request)
     {
-        $action->execute($item, $request->all());
+        $action->execute($request->all(), $request->id);
     }
 
-    public function destroy(Item $item, DeleteItem $action)
+    public function destroy(DeleteItem $action, int $id)
     {
-        $action->execute($item);
+        $action->execute($id);
+
+        return Redirect::route('item.index');
     }
 }
