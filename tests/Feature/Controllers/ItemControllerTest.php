@@ -40,8 +40,7 @@ class ItemControllerTest extends TestCase
         // レスポンスの検証
         $response->assertOk()  # ステータスコードが 200
             ->assertInertia(fn (Assert $page) => $page
-                ->url('/item')
-            );
+                ->url('/item'));
     }
 
     /**
@@ -58,8 +57,7 @@ class ItemControllerTest extends TestCase
         $url = '/item/detail/' . $item->id;
         $response->assertOk()  # ステータスコードが 200
             ->assertInertia(fn (Assert $page) => $page
-                ->url($url)
-            );
+                ->url($url));
     }
 
     /**
@@ -76,8 +74,7 @@ class ItemControllerTest extends TestCase
 
         $this->get(route('item.create'))
             ->assertInertia(fn (Assert $page) => $page
-                ->url('/item/create')
-            );
+                ->url('/item/create'));
     }
 
     /**
