@@ -29,10 +29,10 @@ interface Labels {
 
 const Detail: React.VFC<Props> = (props) => {
   const statusTitle = 'ステータス'
-  const purChasePriceTitle = '仕入れ値'
+  const purchasePriceTitle = '仕入れ値'
   const sellingPriceTitle = '売値'
-  const purChaseTitle = '販売先'
-  const sellingTitle = '購入元'
+  const shopTitle = '販売先'
+  const supplierTitle = '購入元'
   const brandTitle = 'ブランド'
   const categoryTitle = 'カテゴリ'
   const colorTitle = '色'
@@ -162,7 +162,7 @@ const Detail: React.VFC<Props> = (props) => {
           </Typography>
           <Box component="div" mt={3}>
             <PriceInput
-              title={purChasePriceTitle}
+              title={purchasePriceTitle}
               price={states.purChasePrice}
               handleChange={handlePurChasePriceChange}
             />
@@ -176,14 +176,14 @@ const Detail: React.VFC<Props> = (props) => {
           </Box>
           <Box component="div" mt={3}>
             <TextInput
-              title={purChaseTitle}
+              title={shopTitle}
               state={states.purChase}
               handleChange={handlePurChaseChange}
             />
           </Box>
           <Box component="div" mt={3}>
             <TextInput
-              title={sellingTitle}
+              title={supplierTitle}
               state={states.selling}
               handleChange={handleSellingChange}
             />
