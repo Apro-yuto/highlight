@@ -33,7 +33,6 @@ class Item extends Model
         'supplier_id',
         'name',
         'gender',
-        'img_url',
         'purchase_price',
         'selling_price',
         'template',
@@ -85,6 +84,14 @@ class Item extends Model
      * lableを取得
      */
     public function lables()
+    {
+        return $this->hasMany(Lable::class, 'item_id', 'id');
+    }
+
+    /**
+     * item_img_urlsを取得
+     */
+    public function itemImageUrls()
     {
         return $this->hasMany(Lable::class, 'item_id', 'id');
     }
