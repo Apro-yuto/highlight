@@ -124,7 +124,7 @@ const Detail: React.VFC<Props> = (props) => {
                 alt="dammy-img"
               />
             </Card>
-            <Box component="div" mt={2}>
+            <Box component="div" mt={5}>
               <SelectBox
                 title={inputTitleObject.statusTitle}
                 selectNames={SelectNames.statuses}
@@ -144,21 +144,21 @@ const Detail: React.VFC<Props> = (props) => {
               fontWeight='bold'
             />
           </Box>
-          <Box component="div" mt={4}>
+          <Box component="div" mt={5}>
             <PriceInput
               title={inputTitleObject.purchasePriceTitle}
               price={statesNum.purchasePrice}
               onChange={handlePurChasePriceChange}
             />
           </Box>
-          <Box component="div" mt={3}>
+          <Box component="div" mt={5}>
             <PriceInput
               title={inputTitleObject.sellingPriceTitle}
               price={statesNum.sellingPrice}
               onChange={handleSellingPriceChange}
             />
           </Box>
-          <Box component="div" mt={3}>
+          <Box component="div" mt={5}>
             <SelectBox
               title={inputTitleObject.shopTitle}
               selectNames={SelectNames.shops}
@@ -166,7 +166,7 @@ const Detail: React.VFC<Props> = (props) => {
               onChange={handleSupplierChange}
             />
           </Box>
-          <Box component="div" mt={3}>
+          <Box component="div" mt={5}>
             <SelectBox
               title={inputTitleObject.supplierTitle}
               selectNames={SelectNames.suppliers}
@@ -174,7 +174,7 @@ const Detail: React.VFC<Props> = (props) => {
               onChange={handleShopChange}
             />
           </Box>
-          <Box component="div" mt={4}>
+          <Box component="div" mt={5}>
             <SelectBox
               title={inputTitleObject.brandTitle}
               selectNames={SelectNames.brands}
@@ -206,7 +206,7 @@ const Detail: React.VFC<Props> = (props) => {
           </Box>
         </Grid>
       </Grid>
-      <Grid container mt={6}>
+      <Grid container mt={5}>
         <Grid
           item
           sx={{
@@ -230,7 +230,7 @@ const Detail: React.VFC<Props> = (props) => {
           ))}
         </Grid>
       </Grid>
-      <Grid container mt={6}>
+      <Grid container mt={5}>
         <Grid item xs={12}>
           <Typography variant="h5" component="h2">
             商品紹介文
@@ -253,7 +253,7 @@ const Detail: React.VFC<Props> = (props) => {
           item
           xs={12}
           sx={{ display: 'flex', justifyContent: 'right' }}
-          mt={3}
+          mt={5}
         >
           <Box component="div">
             <Button variant="contained">紹介文をコピー</Button>
