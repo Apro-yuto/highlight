@@ -5,7 +5,7 @@ interface Props {
   title: string
   selectNames: Array<string>
   state: string
-  handleChange: (event: SelectChangeEvent) => void
+  onChange: (event: SelectChangeEvent) => void
 }
 
 const SelectBox: React.VFC<Props> = (props) => {
@@ -15,7 +15,7 @@ const SelectBox: React.VFC<Props> = (props) => {
         <Box sx={{ mt: { xs: 0, lg: 2 }, mb: { xs: 2 } }}>{props.title} : </Box>
       </Grid>
       <Grid item lg={9} xs={12}>
-        <Select value={props.state} onChange={props.handleChange} fullWidth>
+        <Select value={props.state} onChange={props.onChange} fullWidth>
           {props.selectNames.map((selectName, index) => (
             <MenuItem key={index} value={selectName}>
               {' '}

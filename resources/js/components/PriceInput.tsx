@@ -5,7 +5,7 @@ import Styles from '@/sass/Layout/PriceInput.module.scss'
 interface Props {
   title: string
   price: number
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const PriceInput: React.VFC<Props> = (props) => {
@@ -18,7 +18,7 @@ const PriceInput: React.VFC<Props> = (props) => {
         <Input
           className={Styles.price_input}
           value={props.price}
-          onChange={props.handleChange}
+          onChange={props.onChange}
           endAdornment={<InputAdornment position="end">円</InputAdornment>}
           fullWidth
         />

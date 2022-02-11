@@ -12,8 +12,8 @@ const LabelInput: React.VFC<Props> = (props) => {
       item
       sx={{ display: 'flex', justifyContent: 'space-between' }}
       xs={12}
-      mt={3}
-      lg={3}
+      mt={4}
+      lg={4}
     >
       <Grid item xs={4}>
         <TextField

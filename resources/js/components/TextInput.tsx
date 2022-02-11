@@ -4,7 +4,7 @@ import { TextField, Grid, Box } from '@mui/material'
 interface Props {
   title: string
   state: string
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const TextInput: React.VFC<Props> = (props) => {
@@ -16,7 +16,7 @@ const TextInput: React.VFC<Props> = (props) => {
       <Grid item lg={9} xs={12}>
         <TextField
           value={props.state}
-          onChange={props.handleChange}
+          onChange={props.onChange}
           variant="standard"
           fullWidth
         />

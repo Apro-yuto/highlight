@@ -13,7 +13,6 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import SelectBox from '@/js/components/SelectBox'
 import PriceInput from '@/js/components/PriceInput'
-import TextInput from '@/js/components/TextInput'
 import FormDialog from '@/js/components/FormDialog'
 import LabelFormDialog from '@/js/components/LabelFormDialog'
 import LabelInput from '@/js/components/LabelInput'
@@ -49,14 +48,18 @@ const Detail: React.VFC<Props> = (props) => {
   // バックエンドから値を取得するが一旦、手入力
   const colorNames: Array<string> = ['黒', '白']
 
+  const suppliers: Array<string> = ['HandM', 'Wego'];
+
+  const shops: Array<string> = ['ユニクロ', 'GU'];
+
   const [states, setStates] = useState({
     status: '',
     brand: '',
     category: '',
     color: '',
     template: '',
-    purChase: '',
-    selling: '',
+    supplier: '',
+    shop: '',
     labels: [
       { label: 'ラベル1', labelValue: '値2' },
       { label: 'ラベル2', labelValue: '値2' },
@@ -102,12 +105,12 @@ const Detail: React.VFC<Props> = (props) => {
     setStates({ ...states, template: event.target.value })
   }
 
-  const handlePurChaseChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setStates({ ...states, purChase: event.target.value })
+  const handleSupplierChange = (event: SelectChangeEvent) => {
+    setStates({ ...states, supplier: event.target.value })
   }
 
-  const handleSellingChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setStates({ ...states, selling: event.target.value })
+  const handleShopChange = (event: SelectChangeEvent) => {
+    setStates({ ...states, shop: event.target.value })
   }
 
   const handlePurChasePriceChange = (
@@ -146,7 +149,7 @@ const Detail: React.VFC<Props> = (props) => {
                 title={statusTitle}
                 selectNames={statusNames}
                 state={states.status}
-                handleChange={handleStatusChange}
+                onChange={handleStatusChange}
               />
             </Box>
           </Grid>
@@ -164,28 +167,30 @@ const Detail: React.VFC<Props> = (props) => {
             <PriceInput
               title={purchasePriceTitle}
               price={states.purChasePrice}
-              handleChange={handlePurChasePriceChange}
+              onChange={handlePurChasePriceChange}
             />
           </Box>
           <Box component="div" mt={3}>
             <PriceInput
               title={sellingPriceTitle}
               price={states.sellingPrice}
-              handleChange={handleSellingPriceChange}
+              onChange={handleSellingPriceChange}
             />
           </Box>
           <Box component="div" mt={3}>
-            <TextInput
+            <SelectBox
               title={shopTitle}
-              state={states.purChase}
-              handleChange={handlePurChaseChange}
+              selectNames={shops}
+              state={states.supplier}
+              onChange={handleSupplierChange}
             />
           </Box>
           <Box component="div" mt={3}>
-            <TextInput
+            <SelectBox
               title={supplierTitle}
-              state={states.selling}
-              handleChange={handleSellingChange}
+              selectNames={suppliers}
+              state={states.shop}
+              onChange={handleShopChange}
             />
           </Box>
           <Box component="div" mt={4}>
@@ -193,7 +198,7 @@ const Detail: React.VFC<Props> = (props) => {
               title={brandTitle}
               selectNames={brandNames}
               state={states.brand}
-              handleChange={handleBrandChange}
+              onChange={handleBrandChange}
             />
             <Box component="div" sx={{ textAlign: 'right' }}>
               <FormDialog title={brandTitle} />
@@ -204,7 +209,7 @@ const Detail: React.VFC<Props> = (props) => {
               title={categoryTitle}
               selectNames={categoryNames}
               state={states.category}
-              handleChange={handleCategoryChange}
+              onChange={handleCategoryChange}
             />
             <Box component="div" sx={{ textAlign: 'right' }}>
               <FormDialog title={categoryTitle} />
@@ -215,7 +220,7 @@ const Detail: React.VFC<Props> = (props) => {
               title={colorTitle}
               selectNames={colorNames}
               state={states.color}
-              handleChange={handleColorChange}
+              onChange={handleColorChange}
             />
           </Box>
         </Grid>
