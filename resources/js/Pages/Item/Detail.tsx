@@ -11,6 +11,7 @@ import {
 } from '@mui/material'
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
+import TextInput from '@/js/components/TextInput'
 import SelectBox from '@/js/components/SelectBox'
 import PriceInput from '@/js/components/PriceInput'
 import FormDialog from '@/js/components/FormDialog'
@@ -24,6 +25,7 @@ interface Props {
 }
 
 interface inputTitles {
+  itemNameTitle: string,
   statusTitle: string,
   purchasePriceTitle: string,
   sellingPriceTitle: string,
@@ -43,6 +45,7 @@ interface Labels {
 const Detail: React.VFC<Props> = (props) => {
 
   const inputTitleObject: inputTitles = {
+    itemNameTitle: '商品名',
     statusTitle:'ステータス',
     purchasePriceTitle:'仕入れ値',
     sellingPriceTitle:'売値',
@@ -56,6 +59,10 @@ const Detail: React.VFC<Props> = (props) => {
   const [statesString, setStatesString] = useState(DetailStates.DetailStatesString);
   const [statesNum, setStatesNum] = useState(DetailStates.DetailStatesNum);
   const [statesArray, setStatesArray] = useState(DetailStates.DetailStatesArray);
+
+  const handleItemNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setStatesString({ ...statesString, itemName: event.target.value })
+  }
 
   const handleStatusChange = (event: SelectChangeEvent) => {
     setStatesString({ ...statesString, status: event.target.value })
@@ -127,16 +134,17 @@ const Detail: React.VFC<Props> = (props) => {
             </Box>
           </Grid>
         </Grid>
-        <Grid item xs={12} lg={6} sx={{ mt: { xs: 6, lg: 0 } }}>
-          <Typography
-            variant="h5"
-            component="h3"
-            pb={1}
-            sx={{ borderBottom: '1px solid' }}
-          >
-            商品名{props.id}
-          </Typography>
-          <Box component="div" mt={3}>
+        <Grid item xs={12} lg={5.8} sx={{ mt: { xs: 6, lg: 0 } }}>
+          <Box component="div">
+            <TextInput
+              title={inputTitleObject.itemNameTitle}
+              state={statesString.itemName}
+              onChange={handleItemNameChange}
+              fontSize={20}
+              fontWeight='bold'
+            />
+          </Box>
+          <Box component="div" mt={4}>
             <PriceInput
               title={inputTitleObject.purchasePriceTitle}
               price={statesNum.purchasePrice}

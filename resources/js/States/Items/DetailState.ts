@@ -1,4 +1,5 @@
 interface DetailStatesString {
+    itemName: string,
     status: string,
     brand: string,
     category: string,
@@ -22,6 +23,7 @@ interface DetailStatesArray {
 
 // 一旦表示確認のためにラベルを仮代入
 const DetailStatesString: DetailStatesString = {
+    itemName: '',
     status: '',
     brand: '',
     category: '',
