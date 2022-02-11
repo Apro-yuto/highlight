@@ -18,10 +18,10 @@ import LabelFormDialog from '@/js/components/LabelFormDialog'
 import LabelInput from '@/js/components/LabelInput'
 import SelectNames from '@/js/Mock/SelectNames'
 import DetailStates from '@/js/States/Items/DetailState'
-import { inputTitles, Labels } from '@/js/Types/Pages/Item/Detail'
+import { InputTitles, Labels } from '@/js/Types/Pages/Item/Detail'
 
 const Detail: React.VFC = () => {
-  const inputTitleObject: inputTitles = {
+  const inputTitleObject: InputTitles = {
     itemNameTitle: '商品名',
     statusTitle: 'ステータス',
     purchasePriceTitle: '仕入れ値',
@@ -37,7 +37,9 @@ const Detail: React.VFC = () => {
     DetailStates.DetailStatesString,
   )
   const [statesNum, setStatesNum] = useState(DetailStates.DetailStatesNum)
-  const [statesArray, setStatesArray] = useState(DetailStates.DetailStatesArray)
+
+  // labelの更新処理は後回し
+  const statesArray = DetailStates.DetailStatesArray
 
   const handleItemNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setStatesString({ ...statesString, itemName: event.target.value })

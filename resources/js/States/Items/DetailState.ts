@@ -1,4 +1,4 @@
-interface DetailStatesString {
+interface DetailStatesStringItf {
   itemName: string
   status: string
   brand: string
@@ -9,12 +9,12 @@ interface DetailStatesString {
   shop: string
 }
 
-interface DetailStatesNum {
+interface DetailStatesNumItf {
   purchasePrice: number
   sellingPrice: number
 }
 
-interface DetailStatesArray {
+interface DetailStatesArrayItf {
   labels: {
     label: string
     labelValue: string
@@ -22,7 +22,7 @@ interface DetailStatesArray {
 }
 
 // 一旦表示確認のためにラベルを仮代入
-const DetailStatesString: DetailStatesString = {
+const DetailStatesString: DetailStatesStringItf = {
   itemName: '',
   status: '',
   brand: '',
@@ -33,12 +33,12 @@ const DetailStatesString: DetailStatesString = {
   shop: '',
 }
 
-const DetailStatesNum: DetailStatesNum = {
+const DetailStatesNum: DetailStatesNumItf = {
   purchasePrice: 0,
   sellingPrice: 0,
 }
 
-const DetailStatesArray: DetailStatesArray = {
+const DetailStatesArray: DetailStatesArrayItf = {
   labels: [
     { label: 'ラベル1', labelValue: '値2' },
     { label: 'ラベル2', labelValue: '値2' },

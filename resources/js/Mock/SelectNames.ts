@@ -1,4 +1,4 @@
-interface SlectNames {
+interface SelectNameItf {
   statuses: Array<string>
   brands: Array<string>
   categories: Array<string>
@@ -8,7 +8,7 @@ interface SlectNames {
 }
 
 // バックエンドから値を取得するが一旦、手入力
-const SlectNames: SlectNames = {
+const SelectNames: SelectNameItf = {
   statuses: ['入荷済', '出荷済'],
   brands: ['アディダス', 'ナイキ'],
   categories: ['上着', '下着'],
@@ -17,4 +17,4 @@ const SlectNames: SlectNames = {
   shops: ['ユニクロ', 'GU'],
 }
 
-export default SlectNames
+export default SelectNames
