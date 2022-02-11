@@ -19,30 +19,9 @@ import LabelFormDialog from '@/js/components/LabelFormDialog'
 import LabelInput from '@/js/components/LabelInput'
 import SelectNames from '@/js/Mock/SelectNames'
 import DetailStates from '@/js/States/Items/DetailState'
+import { inputTitles, Labels } from '@/js/Types/Pages/Item/Detail'
 
-interface Props {
-  id: number
-}
-
-interface inputTitles {
-  itemNameTitle: string,
-  statusTitle: string,
-  purchasePriceTitle: string,
-  sellingPriceTitle: string,
-  shopTitle: string,
-  supplierTitle: string,
-  brandTitle: string,
-  categoryTitle: string,
-  colorTitle: string,
-}
-
-interface Labels {
-  label: string
-  labelValue: string
-}
-
-
-const Detail: React.VFC<Props> = (props) => {
+const Detail: React.VFC = () => {
 
   const inputTitleObject: inputTitles = {
     itemNameTitle: '商品名',
