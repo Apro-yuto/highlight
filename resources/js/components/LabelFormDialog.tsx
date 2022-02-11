@@ -10,7 +10,7 @@ import {
   DialogContentText,
   DialogTitle,
   Fab,
-  Typography
+  Typography,
 } from '@mui/material'
 import AddIcon from '@mui/icons-material/AddCircleOutline'
 
@@ -32,7 +32,7 @@ const LabelFormDialog: React.VFC<Props> = (props) => {
   return (
     <>
       <Typography variant="h5" component="h2" mr={3}>
-            {props.title}
+        {props.title}
       </Typography>
       <Fab onClick={handleClickOpen}>
         <AddIcon />

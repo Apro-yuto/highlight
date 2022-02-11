@@ -11,9 +11,8 @@ import {
 } from '@mui/material'
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
-import TextInput from '@/js/components/TextInput'
 import SelectBox from '@/js/components/SelectBox'
-import PriceInput from '@/js/components/PriceInput'
+import InputField from '@/js/components/InputField'
 import FormDialog from '@/js/components/FormDialog'
 import LabelFormDialog from '@/js/components/LabelFormDialog'
 import LabelInput from '@/js/components/LabelInput'
@@ -22,22 +21,23 @@ import DetailStates from '@/js/States/Items/DetailState'
 import { inputTitles, Labels } from '@/js/Types/Pages/Item/Detail'
 
 const Detail: React.VFC = () => {
-
   const inputTitleObject: inputTitles = {
     itemNameTitle: '商品名',
-    statusTitle:'ステータス',
-    purchasePriceTitle:'仕入れ値',
-    sellingPriceTitle:'売値',
-    shopTitle:'販売先',
-    supplierTitle:'購入元',
-    brandTitle:'ブランド',
-    categoryTitle:'カテゴリ',
-    colorTitle:'色',
+    statusTitle: 'ステータス',
+    purchasePriceTitle: '仕入れ値',
+    sellingPriceTitle: '売値',
+    shopTitle: '販売先',
+    supplierTitle: '購入元',
+    brandTitle: 'ブランド',
+    categoryTitle: 'カテゴリ',
+    colorTitle: '色',
   }
 
-  const [statesString, setStatesString] = useState(DetailStates.DetailStatesString);
-  const [statesNum, setStatesNum] = useState(DetailStates.DetailStatesNum);
-  const [statesArray, setStatesArray] = useState(DetailStates.DetailStatesArray);
+  const [statesString, setStatesString] = useState(
+    DetailStates.DetailStatesString,
+  )
+  const [statesNum, setStatesNum] = useState(DetailStates.DetailStatesNum)
+  const [statesArray, setStatesArray] = useState(DetailStates.DetailStatesArray)
 
   const handleItemNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setStatesString({ ...statesString, itemName: event.target.value })
@@ -58,7 +58,6 @@ const Detail: React.VFC = () => {
   const handleColorChange = (event: SelectChangeEvent) => {
     setStatesString({ ...statesString, color: event.target.value })
   }
-
 
   const handleSupplierChange = (event: SelectChangeEvent) => {
     setStatesString({ ...statesString, supplier: event.target.value })
@@ -94,7 +93,7 @@ const Detail: React.VFC = () => {
         商品一覧
       </Button>
       <Grid container mt={2}>
-        <Grid item xs={12} lg={7}>
+        <Grid item xs={12} lg={5.5}>
           <Grid item xs={12} lg={10}>
             <Card>
               <CardMedia
@@ -113,28 +112,32 @@ const Detail: React.VFC = () => {
             </Box>
           </Grid>
         </Grid>
-        <Grid item xs={12} lg={5} sx={{ mt: { xs: 6, lg: 0 } }}>
+        <Grid item xs={12} lg={6.5} sx={{ mt: { xs: 6, lg: 0 } }}>
           <Box component="div">
-            <TextInput
+            <InputField
               title={inputTitleObject.itemNameTitle}
               state={statesString.itemName}
               onChange={handleItemNameChange}
               fontSize={20}
-              fontWeight='bold'
+              fontWeight="bold"
             />
           </Box>
           <Box component="div" mt={5}>
-            <PriceInput
+            <InputField
               title={inputTitleObject.purchasePriceTitle}
-              price={statesNum.purchasePrice}
+              state={statesNum.purchasePrice}
               onChange={handlePurChasePriceChange}
+              fontSize={16}
+              fontWeight="normal"
             />
           </Box>
           <Box component="div" mt={5}>
-            <PriceInput
+            <InputField
               title={inputTitleObject.sellingPriceTitle}
-              price={statesNum.sellingPrice}
+              state={statesNum.sellingPrice}
               onChange={handleSellingPriceChange}
+              fontSize={16}
+              fontWeight="normal"
             />
           </Box>
           <Box component="div" mt={5}>
