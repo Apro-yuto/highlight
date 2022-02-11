@@ -164,7 +164,7 @@ const Detail: React.VFC = () => {
               <FormDialog title={inputTitleObject.brandTitle} />
             </Box>
           </Box>
-          <Box component="div">
+          <Box component="div" mt={2}>
             <SelectBox
               title={inputTitleObject.categoryTitle}
               selectNames={SelectNames.categories}
@@ -175,7 +175,7 @@ const Detail: React.VFC = () => {
               <FormDialog title={inputTitleObject.categoryTitle} />
             </Box>
           </Box>
-          <Box component="div">
+          <Box component="div" mt={2}>
             <SelectBox
               title={inputTitleObject.colorTitle}
               selectNames={SelectNames.colors}
@@ -194,9 +194,6 @@ const Detail: React.VFC = () => {
             alignItems: 'center',
           }}
         >
-          <Typography variant="h5" component="h2" mr={2}>
-            ラベル
-          </Typography>
           <LabelFormDialog title="ラベル" />
         </Grid>
         <Grid container mt={3} columnSpacing={1}>

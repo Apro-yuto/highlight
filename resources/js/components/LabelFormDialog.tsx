@@ -10,6 +10,7 @@ import {
   DialogContentText,
   DialogTitle,
   Fab,
+  Typography
 } from '@mui/material'
 import AddIcon from '@mui/icons-material/AddCircleOutline'
 
@@ -18,22 +19,25 @@ interface Props {
 }
 
 const LabelFormDialog: React.VFC<Props> = (props) => {
-  const [open, setOpen] = React.useState(false)
+  const [isOpen, isSetOpen] = React.useState(false)
 
   const handleClickOpen = () => {
-    setOpen(true)
+    isSetOpen(true)
   }
 
   const handleClose = () => {
-    setOpen(false)
+    isSetOpen(false)
   }
 
   return (
     <>
+      <Typography variant="h5" component="h2" mr={3}>
+            {props.title}
+      </Typography>
       <Fab onClick={handleClickOpen}>
         <AddIcon />
       </Fab>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={isOpen} onClose={handleClose}>
         <DialogTitle>{props.title}を追加する</DialogTitle>
         <DialogContent>
           <DialogContentText>
