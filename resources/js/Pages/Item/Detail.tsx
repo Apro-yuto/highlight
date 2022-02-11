@@ -115,8 +115,8 @@ const Detail: React.VFC<Props> = (props) => {
         商品一覧
       </Button>
       <Grid container mt={2}>
-        <Grid item xs={12} lg={6}>
-          <Grid item xs={12} lg={11}>
+        <Grid item xs={12} lg={7}>
+          <Grid item xs={12} lg={10}>
             <Card>
               <CardMedia
                 component="img"
@@ -134,7 +134,7 @@ const Detail: React.VFC<Props> = (props) => {
             </Box>
           </Grid>
         </Grid>
-        <Grid item xs={12} lg={5.8} sx={{ mt: { xs: 6, lg: 0 } }}>
+        <Grid item xs={12} lg={5} sx={{ mt: { xs: 6, lg: 0 } }}>
           <Box component="div">
             <TextInput
               title={inputTitleObject.itemNameTitle}
