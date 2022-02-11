@@ -17,6 +17,7 @@ import FormDialog from '@/js/components/FormDialog'
 import LabelFormDialog from '@/js/components/LabelFormDialog'
 import LabelInput from '@/js/components/LabelInput'
 import SelectNames from '@/js/Mock/SelectNames'
+import DetailStates from '@/js/States/Items/DetailState'
 
 interface Props {
   id: number
@@ -51,27 +52,7 @@ const Detail: React.VFC<Props> = (props) => {
     colorTitle:'色',
   }
 
-  const [states, setStates] = useState({
-    status: '',
-    brand: '',
-    category: '',
-    color: '',
-    template: '',
-    supplier: '',
-    shop: '',
-    labels: [
-      { label: 'ラベル1', labelValue: '値2' },
-      { label: 'ラベル2', labelValue: '値2' },
-      { label: 'ラベル3', labelValue: '値3' },
-      { label: 'ラベル4', labelValue: '値4' },
-      { label: 'ラベル5', labelValue: '値5' },
-      { label: 'ラベル6', labelValue: '値6' },
-      { label: 'ラベル7', labelValue: '値7' },
-      { label: 'ラベル8', labelValue: '値8' },
-    ],
-    purChasePrice: 0,
-    sellingPrice: 0,
-  })
+  const [states, setStates] = useState(DetailStates);
 
   const handleStatusChange = (event: SelectChangeEvent) => {
     setStates({ ...states, status: event.target.value })
