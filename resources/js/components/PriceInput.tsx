@@ -1,6 +1,7 @@
 import React from 'react'
 import { Input, InputAdornment, Grid, Box } from '@mui/material'
 import Styles from '@/sass/Layout/PriceInput.module.scss'
+import { textAlign } from '@mui/system'
 
 interface Props {
   title: string
@@ -16,7 +17,7 @@ const PriceInput: React.VFC<Props> = (props) => {
       </Grid>
       <Grid item lg={9} xs={12}>
         <Input
-          className={Styles.price_input}
+          sx={{ '& > input': { textAlign: 'right', direction:'rtl' }}}
           value={props.price}
           onChange={props.onChange}
           endAdornment={<InputAdornment position="end">円</InputAdornment>}
