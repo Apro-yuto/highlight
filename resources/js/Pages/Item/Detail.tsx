@@ -21,20 +21,34 @@ interface Props {
   id: number
 }
 
+interface inputTitles {
+  statusTitle: string,
+  purchasePriceTitle: string,
+  sellingPriceTitle: string,
+  shopTitle: string,
+  supplierTitle: string,
+  brandTitle: string,
+  categoryTitle: string,
+  colorTitle: string,
+}
+
 interface Labels {
   label: string
   labelValue: string
 }
 
 const Detail: React.VFC<Props> = (props) => {
-  const statusTitle = 'ステータス'
-  const purchasePriceTitle = '仕入れ値'
-  const sellingPriceTitle = '売値'
-  const shopTitle = '販売先'
-  const supplierTitle = '購入元'
-  const brandTitle = 'ブランド'
-  const categoryTitle = 'カテゴリ'
-  const colorTitle = '色'
+
+  const inputTitleObject: inputTitles = {
+    statusTitle:'ステータス',
+    purchasePriceTitle:'仕入れ値',
+    sellingPriceTitle:'売値',
+    shopTitle:'販売先',
+    supplierTitle:'購入元',
+    brandTitle:'ブランド',
+    categoryTitle:'カテゴリ',
+    colorTitle:'色',
+  }
 
   // バックエンドから値を取得するが一旦、手入力
   const statusNames: Array<string> = ['入荷済', '出荷済']
@@ -146,7 +160,7 @@ const Detail: React.VFC<Props> = (props) => {
             </Card>
             <Box component="div" mt={2}>
               <SelectBox
-                title={statusTitle}
+                title={inputTitleObject.statusTitle}
                 selectNames={statusNames}
                 state={states.status}
                 onChange={handleStatusChange}
@@ -165,21 +179,21 @@ const Detail: React.VFC<Props> = (props) => {
           </Typography>
           <Box component="div" mt={3}>
             <PriceInput
-              title={purchasePriceTitle}
+              title={inputTitleObject.purchasePriceTitle}
               price={states.purChasePrice}
               onChange={handlePurChasePriceChange}
             />
           </Box>
           <Box component="div" mt={3}>
             <PriceInput
-              title={sellingPriceTitle}
+              title={inputTitleObject.sellingPriceTitle}
               price={states.sellingPrice}
               onChange={handleSellingPriceChange}
             />
           </Box>
           <Box component="div" mt={3}>
             <SelectBox
-              title={shopTitle}
+              title={inputTitleObject.shopTitle}
               selectNames={shops}
               state={states.supplier}
               onChange={handleSupplierChange}
@@ -187,7 +201,7 @@ const Detail: React.VFC<Props> = (props) => {
           </Box>
           <Box component="div" mt={3}>
             <SelectBox
-              title={supplierTitle}
+              title={inputTitleObject.supplierTitle}
               selectNames={suppliers}
               state={states.shop}
               onChange={handleShopChange}
@@ -195,29 +209,29 @@ const Detail: React.VFC<Props> = (props) => {
           </Box>
           <Box component="div" mt={4}>
             <SelectBox
-              title={brandTitle}
+              title={inputTitleObject.brandTitle}
               selectNames={brandNames}
               state={states.brand}
               onChange={handleBrandChange}
             />
             <Box component="div" sx={{ textAlign: 'right' }}>
-              <FormDialog title={brandTitle} />
+              <FormDialog title={inputTitleObject.brandTitle} />
             </Box>
           </Box>
           <Box component="div">
             <SelectBox
-              title={categoryTitle}
+              title={inputTitleObject.categoryTitle}
               selectNames={categoryNames}
               state={states.category}
               onChange={handleCategoryChange}
             />
             <Box component="div" sx={{ textAlign: 'right' }}>
-              <FormDialog title={categoryTitle} />
+              <FormDialog title={inputTitleObject.categoryTitle} />
             </Box>
           </Box>
           <Box component="div">
             <SelectBox
-              title={colorTitle}
+              title={inputTitleObject.colorTitle}
               selectNames={colorNames}
               state={states.color}
               onChange={handleColorChange}
