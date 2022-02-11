@@ -39,6 +39,7 @@ interface Labels {
   labelValue: string
 }
 
+
 const Detail: React.VFC<Props> = (props) => {
 
   const inputTitleObject: inputTitles = {
@@ -52,34 +53,37 @@ const Detail: React.VFC<Props> = (props) => {
     colorTitle:'色',
   }
 
-  const [states, setStates] = useState(DetailStates);
+  const [statesString, setStatesString] = useState(DetailStates.DetailStatesString);
+  const [statesNum, setStatesNum] = useState(DetailStates.DetailStatesNum);
+  const [statesArray, setStatesArray] = useState(DetailStates.DetailStatesArray);
 
   const handleStatusChange = (event: SelectChangeEvent) => {
-    setStates({ ...states, status: event.target.value })
+    setStatesString({ ...statesString, status: event.target.value })
   }
 
   const handleBrandChange = (event: SelectChangeEvent) => {
-    setStates({ ...states, brand: event.target.value })
+    setStatesString({ ...statesString, brand: event.target.value })
   }
 
   const handleCategoryChange = (event: SelectChangeEvent) => {
-    setStates({ ...states, category: event.target.value })
+    setStatesString({ ...statesString, category: event.target.value })
   }
 
   const handleColorChange = (event: SelectChangeEvent) => {
-    setStates({ ...states, color: event.target.value })
+    setStatesString({ ...statesString, color: event.target.value })
   }
 
-  const handleTemplateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setStates({ ...states, template: event.target.value })
-  }
 
   const handleSupplierChange = (event: SelectChangeEvent) => {
-    setStates({ ...states, supplier: event.target.value })
+    setStatesString({ ...statesString, supplier: event.target.value })
   }
 
   const handleShopChange = (event: SelectChangeEvent) => {
-    setStates({ ...states, shop: event.target.value })
+    setStatesString({ ...statesString, shop: event.target.value })
+  }
+
+  const handleTemplateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setStatesString({ ...statesString, template: event.target.value })
   }
 
   const handlePurChasePriceChange = (
@@ -87,7 +91,7 @@ const Detail: React.VFC<Props> = (props) => {
   ) => {
     if (isNaN(Number(event.target.value))) return
     if (!Number.isSafeInteger(Number(event.target.value))) return
-    setStates({ ...states, purChasePrice: Number(event.target.value) })
+    setStatesNum({ ...statesNum, purchasePrice: Number(event.target.value) })
   }
 
   const handleSellingPriceChange = (
@@ -95,7 +99,7 @@ const Detail: React.VFC<Props> = (props) => {
   ) => {
     if (isNaN(Number(event.target.value))) return
     if (!Number.isSafeInteger(Number(event.target.value))) return
-    setStates({ ...states, sellingPrice: Number(event.target.value) })
+    setStatesNum({ ...statesNum, sellingPrice: Number(event.target.value) })
   }
 
   return (
@@ -117,7 +121,7 @@ const Detail: React.VFC<Props> = (props) => {
               <SelectBox
                 title={inputTitleObject.statusTitle}
                 selectNames={SelectNames.statuses}
-                state={states.status}
+                state={statesString.status}
                 onChange={handleStatusChange}
               />
             </Box>
@@ -135,14 +139,14 @@ const Detail: React.VFC<Props> = (props) => {
           <Box component="div" mt={3}>
             <PriceInput
               title={inputTitleObject.purchasePriceTitle}
-              price={states.purChasePrice}
+              price={statesNum.purchasePrice}
               onChange={handlePurChasePriceChange}
             />
           </Box>
           <Box component="div" mt={3}>
             <PriceInput
               title={inputTitleObject.sellingPriceTitle}
-              price={states.sellingPrice}
+              price={statesNum.sellingPrice}
               onChange={handleSellingPriceChange}
             />
           </Box>
@@ -150,7 +154,7 @@ const Detail: React.VFC<Props> = (props) => {
             <SelectBox
               title={inputTitleObject.shopTitle}
               selectNames={SelectNames.shops}
-              state={states.supplier}
+              state={statesString.supplier}
               onChange={handleSupplierChange}
             />
           </Box>
@@ -158,7 +162,7 @@ const Detail: React.VFC<Props> = (props) => {
             <SelectBox
               title={inputTitleObject.supplierTitle}
               selectNames={SelectNames.suppliers}
-              state={states.shop}
+              state={statesString.shop}
               onChange={handleShopChange}
             />
           </Box>
@@ -166,7 +170,7 @@ const Detail: React.VFC<Props> = (props) => {
             <SelectBox
               title={inputTitleObject.brandTitle}
               selectNames={SelectNames.brands}
-              state={states.brand}
+              state={statesString.brand}
               onChange={handleBrandChange}
             />
             <Box component="div" sx={{ textAlign: 'right' }}>
@@ -177,7 +181,7 @@ const Detail: React.VFC<Props> = (props) => {
             <SelectBox
               title={inputTitleObject.categoryTitle}
               selectNames={SelectNames.categories}
-              state={states.category}
+              state={statesString.category}
               onChange={handleCategoryChange}
             />
             <Box component="div" sx={{ textAlign: 'right' }}>
@@ -188,7 +192,7 @@ const Detail: React.VFC<Props> = (props) => {
             <SelectBox
               title={inputTitleObject.colorTitle}
               selectNames={SelectNames.colors}
-              state={states.color}
+              state={statesString.color}
               onChange={handleColorChange}
             />
           </Box>
@@ -209,7 +213,7 @@ const Detail: React.VFC<Props> = (props) => {
           <LabelFormDialog title="ラベル" />
         </Grid>
         <Grid container mt={3} columnSpacing={1}>
-          {states.labels.map((label: Labels, index: number) => (
+          {statesArray.labels.map((label: Labels, index: number) => (
             <LabelInput
               key={index}
               label={label.label}
