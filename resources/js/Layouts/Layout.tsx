@@ -3,7 +3,7 @@ import Box from '@mui/material/Box'
 import Header from '@/js/components/Header'
 import Toolbar from '@mui/material/Toolbar'
 import Sidemenu from '@/js/components/Sidemenu'
-import MuiTheme from '@/js/components/theme/MuiTheme'
+import MuiTheme from '@/js/components/Theme/MuiTheme'
 import { ThemeProvider } from '@mui/material'
 
 const Layout: React.VFC<{ children: ReactNode }> = ({ children }) => {

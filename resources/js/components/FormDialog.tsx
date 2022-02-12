@@ -8,29 +8,33 @@ import {
   DialogContentText,
   DialogTitle,
 } from '@mui/material'
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 
 interface Props {
   title: string
 }
 
 const FormDialog: React.VFC<Props> = (props) => {
-  const [open, setOpen] = React.useState(false)
+  const [isOpen, isSetOpen] = React.useState(false)
 
   const handleClickOpen = () => {
-    setOpen(true)
+    isSetOpen(true)
   }
 
   const handleClose = () => {
-    setOpen(false)
+    isSetOpen(false)
   }
 
   return (
     <>
-      <Button onClick={handleClickOpen} endIcon={<KeyboardArrowRightIcon />} variant="contained">
+      <Button
+        onClick={handleClickOpen}
+        endIcon={<KeyboardArrowRightIcon />}
+        variant="contained"
+      >
         {props.title}を追加する
       </Button>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={isOpen} onClose={handleClose}>
         <DialogTitle>{props.title}名を追加する</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -39,7 +43,6 @@ const FormDialog: React.VFC<Props> = (props) => {
           <TextField
             autoFocus
             margin="dense"
-            id="name"
             label={props.title + '名'}
             fullWidth
             variant="standard"

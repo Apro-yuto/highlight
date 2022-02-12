@@ -34,7 +34,7 @@ const LabelFormDialog: React.VFC<Props> = (props) => {
       <Typography variant="h5" component="h2" mr={3}>
         {props.title}
       </Typography>
-      <Fab onClick={handleClickOpen} >
+      <Fab onClick={handleClickOpen}>
         <AddIcon />
       </Fab>
       <Dialog open={isOpen} onClose={handleClose}>

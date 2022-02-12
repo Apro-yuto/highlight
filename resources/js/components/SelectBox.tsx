@@ -9,9 +9,8 @@ interface Props {
 }
 
 const SelectBox: React.VFC<Props> = (props) => {
-
-  const statusTitleXs = (props.title === 'ステータス') ? 4 : 12;
-  const statusSelectBoxXs = (props.title === 'ステータス') ? 8 : 12;
+  const statusTitleXs = props.title === 'ステータス' ? 4 : 12
+  const statusSelectBoxXs = props.title === 'ステータス' ? 8 : 12
 
   return (
     <Grid container>
