@@ -142,7 +142,7 @@ const Detail: React.VFC = () => {
               fontWeight="normal"
             />
           </Box>
-          <Box component="div" mt={5}>
+          <Box component="div" mt={6}>
             <SelectBox
               title={inputTitleObject.shopTitle}
               selectNames={SelectNames.shops}
@@ -150,7 +150,7 @@ const Detail: React.VFC = () => {
               onChange={handleSupplierChange}
             />
           </Box>
-          <Box component="div" mt={5}>
+          <Box component="div" mt={6}>
             <SelectBox
               title={inputTitleObject.supplierTitle}
               selectNames={SelectNames.suppliers}
@@ -158,29 +158,29 @@ const Detail: React.VFC = () => {
               onChange={handleShopChange}
             />
           </Box>
-          <Box component="div" mt={5}>
+          <Box component="div" mt={6}>
             <SelectBox
               title={inputTitleObject.brandTitle}
               selectNames={SelectNames.brands}
               state={statesString.brand}
               onChange={handleBrandChange}
             />
-            <Box component="div" sx={{ textAlign: 'right' }} mt={1}>
+            <Box component="div" sx={{ textAlign: 'right' }} mt={2}>
               <FormDialog title={inputTitleObject.brandTitle} />
             </Box>
           </Box>
-          <Box component="div" mt={2}>
+          <Box component="div" mt={3}>
             <SelectBox
               title={inputTitleObject.categoryTitle}
               selectNames={SelectNames.categories}
               state={statesString.category}
               onChange={handleCategoryChange}
             />
-            <Box component="div" sx={{ textAlign: 'right' }} mt={1}>
+            <Box component="div" sx={{ textAlign: 'right' }} mt={2}>
               <FormDialog title={inputTitleObject.categoryTitle} />
             </Box>
           </Box>
-          <Box component="div" mt={2}>
+          <Box component="div" mt={3}>
             <SelectBox
               title={inputTitleObject.colorTitle}
               selectNames={SelectNames.colors}
@@ -213,7 +213,11 @@ const Detail: React.VFC = () => {
       </Grid>
       <Grid container mt={5}>
         <Grid item xs={12}>
-          <Typography variant="h5" component="h2">
+          <Typography
+            variant="h6"
+            component="h2"
+            sx={{ color: '#333333', fontWeight: 'bold' }}
+          >
             商品紹介文
           </Typography>
         </Grid>

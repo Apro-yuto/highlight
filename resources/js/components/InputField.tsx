@@ -15,7 +15,11 @@ const InputField: React.VFC<Props> = (props) => {
       <Grid item lg={3} xs={12}>
         <Box
           my={1}
-          sx={{ fontSize: props.fontSize, fontWeight: props.fontWeight }}
+          sx={{
+            fontSize: props.fontSize,
+            fontWeight: props.fontWeight,
+            color: '#333333',
+          }}
         >
           {props.title} :
         </Box>

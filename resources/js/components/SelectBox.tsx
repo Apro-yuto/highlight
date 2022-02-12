@@ -15,7 +15,9 @@ const SelectBox: React.VFC<Props> = (props) => {
   return (
     <Grid container>
       <Grid item lg={3} xs={statusTitleXs}>
-        <Box sx={{ mt: { xs: 2, lg: 2 }, mb: { xs: 2 } }}>{props.title} : </Box>
+        <Box sx={{ mt: { xs: 2, lg: 2 }, mb: { xs: 2 }, color: '#333333' }}>
+          {props.title} :
+        </Box>
       </Grid>
       <Grid item lg={9} xs={statusSelectBoxXs}>
         <Select value={props.state} onChange={props.onChange} fullWidth>
