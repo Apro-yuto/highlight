@@ -15,7 +15,7 @@ const Layout: React.VFC<{ children: ReactNode }> = ({ children }) => {
       <Header toggleIsOpen={() => toggleIsOpen(!isOpen)} />
       <Box sx={{ display: 'flex' }}>
         <Sidemenu isOpen={isOpen} />
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <Box component="main" sx={{ flexGrow: 1, p: 3, maxWidth: '100%' }}>
           <Toolbar />
           <section>{children}</section>
         </Box>
