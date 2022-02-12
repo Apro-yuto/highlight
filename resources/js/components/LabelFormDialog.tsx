@@ -35,7 +35,7 @@ const LabelFormDialog: React.VFC<Props> = (props) => {
         variant="h6"
         component="h2"
         mr={3}
-        sx={{ color: '#333333', fontWeight: 'bold' }}
+        sx={{ color: '#333333', fontWeight: 'bold', letterSpacing: '0.08rem' }}
       >
         {props.title}
       </Typography>

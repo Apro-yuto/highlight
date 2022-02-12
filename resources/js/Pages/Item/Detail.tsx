@@ -41,52 +41,36 @@ const Detail: React.VFC = () => {
   // labelの更新処理は後回し
   const statesArray = DetailStates.DetailStatesArray
 
-  const handleItemNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setStatesString({ ...statesString, itemName: event.target.value })
-  }
-
-  const handleStatusChange = (event: SelectChangeEvent) => {
-    setStatesString({ ...statesString, status: event.target.value })
-  }
-
-  const handleBrandChange = (event: SelectChangeEvent) => {
-    setStatesString({ ...statesString, brand: event.target.value })
-  }
-
-  const handleCategoryChange = (event: SelectChangeEvent) => {
-    setStatesString({ ...statesString, category: event.target.value })
-  }
-
-  const handleColorChange = (event: SelectChangeEvent) => {
-    setStatesString({ ...statesString, color: event.target.value })
-  }
-
-  const handleSupplierChange = (event: SelectChangeEvent) => {
-    setStatesString({ ...statesString, supplier: event.target.value })
-  }
-
-  const handleShopChange = (event: SelectChangeEvent) => {
-    setStatesString({ ...statesString, shop: event.target.value })
-  }
-
   const handleTemplateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setStatesString({ ...statesString, template: event.target.value })
   }
 
-  const handlePurChasePriceChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
+  const handleStringChange = (
+    inputType: string,
+    /* prettier-ignore */
+    /* prettierが悪さしたので降参です */
+    event: SelectChangeEvent | React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ) => {
-    if (isNaN(Number(event.target.value))) return
-    if (!Number.isSafeInteger(Number(event.target.value))) return
-    setStatesNum({ ...statesNum, purchasePrice: Number(event.target.value) })
+    if (!event) return
+    const stateStrings = {
+      ...statesString,
+    }
+    stateStrings[inputType] = event.target.value
+    setStatesString(stateStrings)
   }
 
-  const handleSellingPriceChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
+  const handleNumChange = (
+    inputType: string,
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ) => {
+    if (!event) return
     if (isNaN(Number(event.target.value))) return
     if (!Number.isSafeInteger(Number(event.target.value))) return
-    setStatesNum({ ...statesNum, sellingPrice: Number(event.target.value) })
+    const stateNums = {
+      ...statesNum,
+    }
+    stateNums[inputType] = Number(event.target.value)
+    setStatesNum(stateNums)
   }
 
   return (
@@ -109,7 +93,8 @@ const Detail: React.VFC = () => {
                 title={inputTitleObject.statusTitle}
                 selectNames={SelectNames.statuses}
                 state={statesString.status}
-                onChange={handleStatusChange}
+                inputType="status"
+                onChange={handleStringChange}
               />
             </Box>
           </Grid>
@@ -119,7 +104,8 @@ const Detail: React.VFC = () => {
             <InputField
               title={inputTitleObject.itemNameTitle}
               state={statesString.itemName}
-              onChange={handleItemNameChange}
+              onChange={handleStringChange}
+              inputType="itemName"
               fontSize={20}
               fontWeight="bold"
             />
@@ -128,34 +114,34 @@ const Detail: React.VFC = () => {
             <InputField
               title={inputTitleObject.purchasePriceTitle}
               state={statesNum.purchasePrice}
-              onChange={handlePurChasePriceChange}
-              fontSize={16}
-              fontWeight="normal"
+              onChange={handleNumChange}
+              inputType="purchasePrice"
             />
           </Box>
           <Box component="div" mt={5}>
             <InputField
               title={inputTitleObject.sellingPriceTitle}
               state={statesNum.sellingPrice}
-              onChange={handleSellingPriceChange}
-              fontSize={16}
-              fontWeight="normal"
+              onChange={handleNumChange}
+              inputType="sellingPrice"
             />
           </Box>
           <Box component="div" mt={6}>
             <SelectBox
               title={inputTitleObject.shopTitle}
               selectNames={SelectNames.shops}
-              state={statesString.supplier}
-              onChange={handleSupplierChange}
+              state={statesString.shop}
+              onChange={handleStringChange}
+              inputType="shop"
             />
           </Box>
           <Box component="div" mt={6}>
             <SelectBox
               title={inputTitleObject.supplierTitle}
               selectNames={SelectNames.suppliers}
-              state={statesString.shop}
-              onChange={handleShopChange}
+              state={statesString.supplier}
+              onChange={handleStringChange}
+              inputType="supplier"
             />
           </Box>
           <Box component="div" mt={6}>
@@ -163,7 +149,8 @@ const Detail: React.VFC = () => {
               title={inputTitleObject.brandTitle}
               selectNames={SelectNames.brands}
               state={statesString.brand}
-              onChange={handleBrandChange}
+              onChange={handleStringChange}
+              inputType="brand"
             />
             <Box component="div" sx={{ textAlign: 'right' }} mt={2}>
               <FormDialog title={inputTitleObject.brandTitle} />
@@ -174,7 +161,8 @@ const Detail: React.VFC = () => {
               title={inputTitleObject.categoryTitle}
               selectNames={SelectNames.categories}
               state={statesString.category}
-              onChange={handleCategoryChange}
+              onChange={handleStringChange}
+              inputType="category"
             />
             <Box component="div" sx={{ textAlign: 'right' }} mt={2}>
               <FormDialog title={inputTitleObject.categoryTitle} />
@@ -185,7 +173,8 @@ const Detail: React.VFC = () => {
               title={inputTitleObject.colorTitle}
               selectNames={SelectNames.colors}
               state={statesString.color}
-              onChange={handleColorChange}
+              onChange={handleStringChange}
+              inputType="color"
             />
           </Box>
         </Grid>
@@ -216,7 +205,11 @@ const Detail: React.VFC = () => {
           <Typography
             variant="h6"
             component="h2"
-            sx={{ color: '#333333', fontWeight: 'bold' }}
+            sx={{
+              color: '#333333',
+              fontWeight: 'bold',
+              letterSpacing: '0.08rem',
+            }}
           >
             商品紹介文
           </Typography>

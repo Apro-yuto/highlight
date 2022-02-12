@@ -7,17 +7,20 @@ interface DetailStatesStringItf {
   template: string
   supplier: string
   shop: string
+  [inputType: string]: string
 }
 
 interface DetailStatesNumItf {
   purchasePrice: number
   sellingPrice: number
+  [inputType: string]: number
 }
 
 interface DetailStatesArrayItf {
   labels: {
     label: string
     labelValue: string
+    [inputType: string]: string
   }[]
 }
 

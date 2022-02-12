@@ -4,10 +4,16 @@ import { Input, Grid, Box } from '@mui/material'
 interface Props {
   title: string
   state: string | number
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  fontSize: number
-  fontWeight: string
+  onChange: (
+    inputType: string,
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+  ) => void
+  inputType: string
+  fontSize?: number
+  fontWeight?: string
 }
+
+const defaultProps = { fontSize: 14, fontWeight: 'normal' }
 
 const InputField: React.VFC<Props> = (props) => {
   return (
@@ -19,6 +25,7 @@ const InputField: React.VFC<Props> = (props) => {
             fontSize: props.fontSize,
             fontWeight: props.fontWeight,
             color: '#333333',
+            letterSpacing: '0.08rem',
           }}
         >
           {props.title} :
@@ -29,16 +36,22 @@ const InputField: React.VFC<Props> = (props) => {
           <Input
             sx={{ '& > input': { textAlign: 'right', direction: 'rtl' } }}
             value={props.state}
-            onChange={props.onChange}
+            onChange={(e) => props.onChange(props.inputType, e)}
             fullWidth
           />
         ) : (
-          <Input value={props.state} onChange={props.onChange} fullWidth />
+          <Input
+            value={props.state}
+            onChange={(e) => props.onChange(props.inputType, e)}
+            fullWidth
+          />
         )}
         <Box ml={2}>{typeof props.state === 'number' ? '円' : ''}</Box>
       </Grid>
     </Grid>
   )
 }
+
+InputField.defaultProps = defaultProps
 
 export default InputField

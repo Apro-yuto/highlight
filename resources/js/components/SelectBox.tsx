@@ -5,7 +5,11 @@ interface Props {
   title: string
   selectNames: Array<string>
   state: string
-  onChange: (event: SelectChangeEvent) => void
+  onChange: (
+    inputType: string,
+    event: SelectChangeEvent | React.ChangeEvent<HTMLInputElement>,
+  ) => void
+  inputType: string
 }
 
 const SelectBox: React.VFC<Props> = (props) => {
@@ -13,14 +17,21 @@ const SelectBox: React.VFC<Props> = (props) => {
   const statusSelectBoxXs = props.title === 'ステータス' ? 8 : 12
 
   return (
-    <Grid container>
-      <Grid item lg={3} xs={statusTitleXs}>
-        <Box sx={{ mt: { xs: 2, lg: 2 }, mb: { xs: 2 }, color: '#333333' }}>
+    <Grid container sx={{ alignItems: 'center' }}>
+      <Grid item lg={3} xs={statusTitleXs} sx={{ mb: { xs: 1, lg: 0 } }}>
+        <Box
+          sx={{ color: '#333333', letterSpacing: '0.08rem', fontSize: '14px' }}
+        >
           {props.title} :
         </Box>
       </Grid>
       <Grid item lg={9} xs={statusSelectBoxXs}>
-        <Select value={props.state} onChange={props.onChange} fullWidth>
+        <Select
+          value={props.state}
+          onChange={(e) => props.onChange(props.inputType, e)}
+          fullWidth
+          sx={{ height: '50px' }}
+        >
           {props.selectNames.map((selectName, index) => (
             <MenuItem key={index} value={selectName}>
               {' '}
