@@ -8,7 +8,7 @@ import {
   DialogContentText,
   DialogTitle,
 } from '@mui/material'
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 interface Props {
   title: string
@@ -27,7 +27,7 @@ const FormDialog: React.VFC<Props> = (props) => {
 
   return (
     <>
-      <Button onClick={handleClickOpen} endIcon={<KeyboardArrowDownIcon />}>
+      <Button onClick={handleClickOpen} endIcon={<KeyboardArrowRightIcon />} variant="contained">
         {props.title}を追加する
       </Button>
       <Dialog open={open} onClose={handleClose}>

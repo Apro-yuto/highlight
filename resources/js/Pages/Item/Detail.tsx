@@ -24,7 +24,7 @@ const Detail: React.VFC = () => {
   const inputTitleObject: InputTitles = {
     itemNameTitle: '商品名',
     statusTitle: 'ステータス',
-    purchasePriceTitle: '仕入れ値',
+    purchasePriceTitle: '仕入値',
     sellingPriceTitle: '売値',
     shopTitle: '販売先',
     supplierTitle: '購入元',
@@ -95,7 +95,7 @@ const Detail: React.VFC = () => {
         商品一覧
       </Button>
       <Grid container mt={2}>
-        <Grid item xs={12} lg={5.5}>
+        <Grid item xs={12} lg={6}>
           <Grid item xs={12} lg={10}>
             <Card>
               <CardMedia
@@ -114,7 +114,7 @@ const Detail: React.VFC = () => {
             </Box>
           </Grid>
         </Grid>
-        <Grid item xs={12} lg={6.5} sx={{ mt: { xs: 6, lg: 0 } }}>
+        <Grid item xs={12} lg={6} sx={{ mt: { xs: 6, lg: 0 } }}>
           <Box component="div">
             <InputField
               title={inputTitleObject.itemNameTitle}
@@ -165,7 +165,7 @@ const Detail: React.VFC = () => {
               state={statesString.brand}
               onChange={handleBrandChange}
             />
-            <Box component="div" sx={{ textAlign: 'right' }}>
+            <Box component="div" sx={{ textAlign: 'right' }} mt={1}>
               <FormDialog title={inputTitleObject.brandTitle} />
             </Box>
           </Box>
@@ -176,7 +176,7 @@ const Detail: React.VFC = () => {
               state={statesString.category}
               onChange={handleCategoryChange}
             />
-            <Box component="div" sx={{ textAlign: 'right' }}>
+            <Box component="div" sx={{ textAlign: 'right' }} mt={1}>
               <FormDialog title={inputTitleObject.categoryTitle} />
             </Box>
           </Box>
@@ -201,7 +201,7 @@ const Detail: React.VFC = () => {
         >
           <LabelFormDialog title="ラベル" />
         </Grid>
-        <Grid container mt={3} columnSpacing={1}>
+        <Grid container mt={3} columnSpacing={4}>
           {statesArray.labels.map((label: Labels, index: number) => (
             <LabelInput
               key={index}

@@ -9,12 +9,16 @@ interface Props {
 }
 
 const SelectBox: React.VFC<Props> = (props) => {
+
+  const statusTitleXs = (props.title === 'ステータス') ? 4 : 12;
+  const statusSelectBoxXs = (props.title === 'ステータス') ? 8 : 12;
+
   return (
     <Grid container>
-      <Grid item lg={3} xs={12}>
-        <Box sx={{ mt: { xs: 0, lg: 2 }, mb: { xs: 2 } }}>{props.title} : </Box>
+      <Grid item lg={3} xs={statusTitleXs}>
+        <Box sx={{ mt: { xs: 2, lg: 2 }, mb: { xs: 2 } }}>{props.title} : </Box>
       </Grid>
-      <Grid item lg={9} xs={12}>
+      <Grid item lg={9} xs={statusSelectBoxXs}>
         <Select value={props.state} onChange={props.onChange} fullWidth>
           {props.selectNames.map((selectName, index) => (
             <MenuItem key={index} value={selectName}>

@@ -1,36 +1,57 @@
 import React from 'react'
-import { Grid, TextField } from '@mui/material'
+import { Grid, TextField, Box } from '@mui/material'
+import InputUnstyled, { InputUnstyledProps } from '@mui/base/InputUnstyled';
+import { makeStyles } from '@mui/styles';
+import { borderRadius, borderRight, height } from '@mui/system';
+
 
 interface Props {
   label: string
   labelValue: string
 }
 
+const useStyles = makeStyles({
+  labelWrap: {
+    display:'flex',
+    width:'100%',
+  },
+  label:{
+    width:'40%',
+    '& > input': {
+      lineHeight: 3.5,
+      width:'100%',
+      borderRadius:'40px 0px 0px 40px',
+      borderRight:'none',
+      paddingLeft:'10px',
+      backgroundColor:'#E0E0E0',
+      color:'#7D7D7D'
+    },
+  },
+  labelValue:{
+    width:'60%',
+    '& > input': { lineHeight: 3.5,
+      width:'100%',
+      borderRadius:'0px 40px 40px 0px',
+      paddingLeft:'10px',
+      color:'#7D7D7D'
+    }
+  }
+})
+
 const LabelInput: React.VFC<Props> = (props) => {
+  const classes = useStyles(props);
+
   return (
     <Grid
       item
-      sx={{ display: 'flex', justifyContent: 'space-between' }}
       xs={12}
       mt={4}
       lg={4}
     >
-      <Grid item xs={4}>
-        <TextField
-          label="ラベル名"
-          variant="outlined"
-          value={props.label}
-          fullWidth
-        />
-      </Grid>
-      <Grid item xs={7.9}>
-        <TextField
-          label="値"
-          variant="outlined"
-          value={props.labelValue}
-          fullWidth
-        />
-      </Grid>
+      <Box className={classes.labelWrap}>
+        <InputUnstyled value={props.label} className={classes.label}/>
+        <InputUnstyled value={props.labelValue} className={classes.labelValue}/>
+      </Box>
     </Grid>
   )
 }
