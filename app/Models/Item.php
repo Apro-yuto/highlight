@@ -93,7 +93,7 @@ class Item extends Model
      */
     public function itemImageUrls()
     {
-        return $this->hasMany(Lable::class, 'item_id', 'id');
+        return $this->hasMany(ItemImgUrl::class, 'item_id', 'id');
     }
 
     /**
