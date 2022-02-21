@@ -6,8 +6,8 @@ interface ItemProps {
   brand: string
   category: string
   gender: number
-  purchasePrice: string
-  sellingPrice: string
+  purchasePrice: number
+  sellingPrice: number
 }
 
 export default ItemProps

@@ -2,7 +2,7 @@ import React from 'react'
 import CardContent from '@mui/material/CardContent'
 import Box from '@mui/material/Box'
 
-const getGenderComponent = (numGender: number | string) => {
+const getGenderComponent = (numGender: number) => {
   if (numGender === 1) {
     return <CardContent sx={{ bgcolor: 'info.light', py: '5px' }} />
   } else if (numGender === 2) {
@@ -19,7 +19,7 @@ const getGenderComponent = (numGender: number | string) => {
   }
 }
 
-const ItemCardGender: React.VFC<{ numGender: number | string }> = (props) => {
+const ItemCardGender: React.VFC<{ numGender: number }> = (props) => {
   return <>{getGenderComponent(props.numGender)}</>
 }
 

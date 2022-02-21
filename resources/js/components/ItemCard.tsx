@@ -11,6 +11,8 @@ import {
 } from '@mui/material'
 import ItemCardGender from '@/js/components/ItemCardGender'
 import ItemCardImage from '@/js/components/ItemCardImage'
+import ITEM_STATUSES from '@/js/Constants/Item/Status'
+import getToJpyString from '@/js/Partials/getToJpyString'
 import ItemProps from '@/js/Types/Item/ItemProps'
 import textOverflowStyles from '@/js/Styles/textOverflowStyles'
 
@@ -32,11 +34,14 @@ const ItemCard: React.VFC<Props> = (props) => {
                 component="h2"
                 sx={{
                   ...textOverflowStyles,
+                  color: ITEM_STATUSES[props.item.status].is_error
+                    ? 'error.mail'
+                    : 'info.mail',
                   fontSize: { lg: 16, xs: 14 },
                   fontWeight: 600,
                 }}
               >
-                {props.item.status}
+                {ITEM_STATUSES[props.item.status].status_name}
               </Typography>
 
               <Divider sx={{ mt: 1 }} />
@@ -73,6 +78,7 @@ const ItemCard: React.VFC<Props> = (props) => {
                 component="div"
                 sx={{
                   display: 'flex',
+                  mt: 2,
                   flexDirection: { lg: 'row', xs: 'column' },
                 }}
               >
@@ -89,11 +95,13 @@ const ItemCard: React.VFC<Props> = (props) => {
                       component="span"
                       variant="h5"
                       sx={{
+                        ...textOverflowStyles,
+                        fontSize: 20,
                         display: 'block',
                         lineHeight: 1,
                       }}
                     >
-                      &yen;{props.item.purchasePrice}
+                      {getToJpyString(props.item.purchasePrice)}
                     </Typography>
                   </Typography>
                 </Box>
@@ -111,15 +119,13 @@ const ItemCard: React.VFC<Props> = (props) => {
                       component="span"
                       variant="h5"
                       sx={{
+                        ...textOverflowStyles,
+                        fontSize: 20,
                         display: 'block',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                        whiteSpace: 'nowrap',
-                        maxWidth: '100%',
                         lineHeight: 1,
                       }}
                     >
-                      &yen;{props.item.sellingPrice}
+                      {getToJpyString(props.item.sellingPrice)}
                     </Typography>
                   </Typography>
                 </Box>
