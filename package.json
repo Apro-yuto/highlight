@@ -43,7 +43,9 @@
         "@emotion/styled": "^11.6.0",
         "@inertiajs/inertia": "^0.10.1",
         "@inertiajs/inertia-react": "^0.7.1",
+        "@mui/base": "^5.0.0-alpha.68",
         "@mui/icons-material": "^5.2.5",
-        "@mui/material": "^5.2.7"
+        "@mui/material": "^5.2.7",
+        "@mui/styles": "^5.4.1"
     }
 }

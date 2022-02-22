@@ -3,6 +3,8 @@ import Box from '@mui/material/Box'
 import Header from '@/js/components/Header'
 import Toolbar from '@mui/material/Toolbar'
 import Sidemenu from '@/js/components/Sidemenu'
+import MuiTheme from '@/js/components/Theme/MuiTheme'
+import { ThemeProvider } from '@mui/material'
 
 const Layout: React.VFC<{ children: ReactNode }> = ({ children }) => {
   const [isOpen, toggleIsOpen]: [
@@ -11,16 +13,18 @@ const Layout: React.VFC<{ children: ReactNode }> = ({ children }) => {
   ] = useState<boolean>(false)
 
   return (
-    <main>
-      <Header toggleIsOpen={() => toggleIsOpen(!isOpen)} />
-      <Box sx={{ display: 'flex' }}>
-        <Sidemenu isOpen={isOpen} />
-        <Box component="main" sx={{ flexGrow: 1, p: 3, maxWidth: '100%' }}>
-          <Toolbar />
-          <section>{children}</section>
+    <ThemeProvider theme={MuiTheme}>
+      <main>
+        <Header toggleIsOpen={() => toggleIsOpen(!isOpen)} />
+        <Box sx={{ display: 'flex' }}>
+          <Sidemenu isOpen={isOpen} />
+          <Box component="main" sx={{ flexGrow: 1, p: 3, maxWidth: '100%' }}>
+            <Toolbar />
+            <section>{children}</section>
+          </Box>
         </Box>
-      </Box>
-    </main>
+      </main>
+    </ThemeProvider>
   )
 }
 
