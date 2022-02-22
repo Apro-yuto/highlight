@@ -1,9 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,25 +22,12 @@ Route::middleware('guest')->group(function () {
 });
 Route::middleware('auth')->group(function () {
     Route::group(['prefix' => 'item', 'as' => 'item.'], function () {
-        Route::get('/', function () {
-            return Inertia::render('Item/Index', ['data' => ['yuto', 'hayashi', 'shu', 'sakadume', 'oowada'], 'user' => Auth::user()]);
-        })->name('index');
-
-        Route::get('/detail/{item_id}', function ($item_id) {
-            return '/detail/' . $item_id;
-        })->name('detail.index');
-
-        Route::get('/store', function () {
-            return '/item/store';
-        })->name('store.index');
-
-        Route::post('/store', function () {
-            return '/item/store';
-        })->name('store.post');
-
-        Route::put('/detail/{item_id}/edit', function ($item_id) {
-            return '/detail/edit/' . $item_id;
-        })->name('detail.edit');
+        Route::get('/', [ItemController::class, 'index'])->name('index');
+        Route::get('/detail/{id}', [ItemController::class, 'detail'])->name('detail');
+        Route::get('/create', [ItemController::class, 'create'])->name('create');
+        Route::post('/', [ItemController::class, 'store'])->name('store');
+        Route::put('/detail/{id}', [ItemController::class, 'update'])->name('update');
+        Route::delete('/detail/{id}', [ItemController::class, 'destroy'])->name('destroy');
     });
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
