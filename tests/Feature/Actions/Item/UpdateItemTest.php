@@ -10,22 +10,27 @@ class UpdateItemTest extends TestCase
 {
     public function testUpdateItem()
     {
-        $item = Item::factory()->create();
-
-        $data = [
+        $item = Item::factory()->create([
             'user_id'        => 1,
-            'name'           => 'HogeHoge',
+            'status_id'      => 1,
+            'name'           => 'ItemBeforeUpdate',
             'gender'         => 1,
             'purchase_price' => 1000,
+            'selling_price'  => 1000,
+        ]);
+
+        $expectedItem = [
+            'id'             => $item->id,
+            'user_id'        => $item->user_id,
+            'status_id'      => 1,
+            'name'           => 'ItemAfterUpdate',
+            'gender'         => 2,
+            'purchase_price' => 2000,
             'selling_price'  => 2000,
         ];
-        app(UpdateItem::class)->execute($item->id, $data);
 
-        $UpdatedItem = Item::where('id', $item->id)->first();
-        $this->assertEquals('HogeHoge', $UpdatedItem->name);
-        $this->assertEquals(1, $UpdatedItem->user_id);
-        $this->assertEquals(1, $UpdatedItem->gender);
-        $this->assertEquals(1000, $UpdatedItem->purchase_price);
-        $this->assertEquals(2000, $UpdatedItem->selling_price);
+        app(UpdateItem::class)->execute($item->id, $expectedItem);
+
+        $this->assertDatabaseHas('items', $expectedItem);
     }
 }

@@ -3,11 +3,18 @@
 namespace App\Actions\Item;
 
 use App\Models\Item;
+use Illuminate\Database\Eloquent\Builder;
 
 class GetItems
 {
-    public function execute(int $userId)
+    /**
+     * 商品一覧を取得
+     *
+     * @param int $userId ユーザーID
+     * @return Illuminate\Database\Eloquent\Builder
+     */
+    public function execute(int $userId): Builder
     {
-        return Item::where('user_id', $userId)->get();
+        return Item::where('user_id', $userId);
     }
 }

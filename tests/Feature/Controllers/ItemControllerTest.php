@@ -18,22 +18,19 @@ class ItemControllerTest extends TestCase
 
         $this->user = User::factory()->create();
         $this->actingAs($this->user);
-        $this->data = [
-            'user_id'        => 1,
-            'name'           => 'Hoge',
+    }
+
+    public function testIndex()
+    {
+        $testIndexItem = [
+            'user_id'        => $this->user->id,
+            'name'           => 'testIndexItem',
             'gender'         => 1,
             'purchase_price' => 1000,
             'selling_price'  => 2000,
         ];
-    }
+        $item = Item::factory()->create($testIndexItem);
 
-    /**
-     * GETリクエストで商品一覧が返ってくるか確認。
-     *
-     * @return void
-     */
-    public function testIndex()
-    {
         // GET リクエスト
         $response = $this->get(route('item.index'));
 
@@ -41,16 +38,36 @@ class ItemControllerTest extends TestCase
         $response->assertOk()  // ステータスコードが 200
             ->assertInertia(fn (Assert $page) => $page
                 ->url('/item'));
+
+        $response->assertOk()
+            ->assertInertia(fn (Assert $page) => $page
+                ->url('/item')
+                ->has('data', fn (Assert $page) => $page
+                    ->has('0', fn (Assert $page) => $page
+                        ->where('id', $item->id)
+                        ->where('user_id', $item->user_id)
+                        ->where('name', $item->name)
+                        ->where('gender', $item->gender)
+                        ->where('purchase_price', $item->purchase_price)
+                        ->where('selling_price', $item->selling_price)
+                        ->etc()))
+                ->has('user', fn (Assert $page) => $page
+                    ->where('id', $this->user->id)
+                    ->where('name', $this->user->name)
+                    ->where('email', $this->user->email)
+                    ->etc()));
     }
 
-    /**
-     * GETリクエストで商品詳細が返ってくるか確認。
-     *
-     * @return void
-     */
     public function testDetail()
     {
-        $item     = Item::factory()->create($this->data);
+        $testDetailItem = [
+            'user_id'        => $this->user->id,
+            'name'           => 'testDetailItem',
+            'gender'         => 1,
+            'purchase_price' => 1000,
+            'selling_price'  => 2000,
+        ];
+        $item     = Item::factory()->create($testDetailItem);
         $response = $this->get(route('item.detail', $item->id));
 
         // レスポンスの検証
@@ -60,79 +77,67 @@ class ItemControllerTest extends TestCase
                 ->url($url));
     }
 
-    /**
-     * GETリクエストで新規作成が返ってくるか確認。
-     *
-     * @return void
-     */
     public function testCreate()
     {
         $response = $this->get(route('item.create'));
 
         // レスポンス検証
-        // $response->assertOk(); # ステータスコードが 200
-
-        $this->get(route('item.create'))
+        $response->assertOk() // ステータスコードが 200
             ->assertInertia(fn (Assert $page) => $page
                 ->url('/item/create'));
     }
 
-    /**
-     * POSTリクエストでデータが保存されるか確認。
-     *
-     * @return void
-     */
     public function testStore()
     {
-        $data = [
-            'user_id'        => 1,
-            'name'           => 'HogeHoge',
-            'gender'         => 2,
-            'purchase_price' => 2000,
-            'selling_price'  => 4000,
-        ];
+        $item = Item::factory()->make()->toArray();
+
         // POST リクエスト
-        $response = $this->post(route('item.store'), $data);
-
-        // レスポンス検証
-        $response->assertOk(); // ステータスコードが 200
-        $storedItem = Item::where('name', 'HogeHoge')->first();
-        $this->assertEquals(1, $storedItem->user_id);
-        $this->assertEquals(2, $storedItem->gender);
-        $this->assertEquals(2000, $storedItem->purchase_price);
-        $this->assertEquals(4000, $storedItem->selling_price);
-    }
-
-    /**
-     * PUTリクエストでデータが更新されるか確認。
-     *
-     * @return void
-     */
-    public function testUpdate()
-    {
-        $item = Item::factory()->create();
-
-        // PUTリクエスト
-        $response = $this->put(route('item.update', ['id' => $item->id]), $this->data);
+        $response = $this->post(route('item.store'), $item);
 
         // レスポンス検証
         $response->assertOk();
-        $updatedItem = Item::where('id', $item->id)->first();
-        $this->assertEquals(1, $updatedItem->user_id);
-        $this->assertEquals('Hoge', $updatedItem->name);
-        $this->assertEquals(1, $updatedItem->gender);
-        $this->assertEquals(1000, $updatedItem->purchase_price);
-        $this->assertEquals(2000, $updatedItem->selling_price);
+        $this->assertDatabaseHas('items', $item);
     }
 
-    /**
-     * DELETEリクエストでデータが削除されるか確認。
-     *
-     * @return void
-     */
+    public function testUpdate()
+    {
+        $item = Item::factory()->create([
+            'user_id'        => $this->user->id,
+            'status_id'      => 1,
+            'name'           => 'ItemBeforeUpdate',
+            'gender'         => 1,
+            'purchase_price' => 1000,
+            'selling_price'  => 1000,
+        ]);
+
+        $expectedItem = [
+            'id'             => $item->id,
+            'user_id'        => $item->user_id,
+            'status_id'      => 1,
+            'name'           => 'ItemAfterUpdate',
+            'gender'         => 2,
+            'purchase_price' => 2000,
+            'selling_price'  => 2000,
+        ];
+
+        // PUTリクエスト
+        $response = $this->put(route('item.update', ['id' => $item->id]), $expectedItem);
+
+        // レスポンス検証
+        $response->assertOk();
+        $this->assertDatabaseHas('items', $expectedItem);
+    }
+
     public function testDestroy()
     {
-        $item = Item::factory()->create();
+        $testDestroyItem = [
+            'user_id'        => $this->user->id,
+            'name'           => 'testDestroyItem',
+            'gender'         => 1,
+            'purchase_price' => 1000,
+            'selling_price'  => 2000,
+        ];
+        $item = Item::factory()->create($testDestroyItem);
 
         // DELETE リクエスト
         $response = $this->delete(route('item.destroy', $item->id));

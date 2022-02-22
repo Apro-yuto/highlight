@@ -25,7 +25,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [ItemController::class, 'index'])->name('index');
         Route::get('/detail/{id}', [ItemController::class, 'detail'])->name('detail');
         Route::get('/create', [ItemController::class, 'create'])->name('create');
-        Route::put('/detail/{id}/edit', [ItemController::class, 'edit'])->name('edit');
         Route::post('/', [ItemController::class, 'store'])->name('store');
         Route::put('/detail/{id}', [ItemController::class, 'update'])->name('update');
         Route::delete('/detail/{id}', [ItemController::class, 'destroy'])->name('destroy');

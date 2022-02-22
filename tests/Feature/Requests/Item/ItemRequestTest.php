@@ -2,21 +2,23 @@
 
 namespace Tests\Feature\Requests\Item;
 
-use App\Http\Requests\Item\UpdateItemRequest;
+use App\Http\Requests\Item\ItemRequest;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
 use Tests\ValidationTestCase;
 
-class UpdateItemRequestTest extends ValidationTestCase
+class ItemRequestTest extends ValidationTestCase
 {
     protected function request(): FormRequest
     {
-        return new UpdateItemRequest();
+        return new ItemRequest();
     }
 
     protected function baseInput(): array
     {
         return [
+            'user_id'        => 1,
+            'status_id'      => 1,
             'name'           => 'Hoge',
             'gender'         => 1,
             'img_url'        => 'http://placehold.it/300',
@@ -31,6 +33,42 @@ class UpdateItemRequestTest extends ValidationTestCase
         return [
             'All OK' => [
                 true,
+            ],
+
+            'user_idが存在しない' => [
+                false, [], 'user_id',
+            ],
+
+            'user_idが正しい形式ではない' => [
+                false, ['user_id' => '１'],
+            ],
+
+            'brand_idが正しい形式ではない' => [
+                false, ['brand_id' => '１'],
+            ],
+
+            'color_idが正しい形式ではない' => [
+                false, ['color_id' => '１'],
+            ],
+
+            'category_idが正しい形式ではない' => [
+                false, ['category_id' => '１'],
+            ],
+
+            'shop_idが正しい形式ではない' => [
+                false, ['shop_id' => '１'],
+            ],
+
+            'status_idが存在しない' => [
+                false, [], 'status_id',
+            ],
+
+            'status_idが正しい形式ではない' => [
+                false, ['status_id' => '１'],
+            ],
+
+            'supplier_idが正しい形式ではない' => [
+                false, ['supplier_id' => '１'],
             ],
 
             'nameが存在しない' => [
