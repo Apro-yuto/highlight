@@ -1,17 +1,21 @@
 import React from 'react'
-import WorkerList from '@/js/components/Example'
+import Grid from '@mui/material/Grid'
+import ItemCard from '@/js/components/ItemCard'
+import { mockItems } from '@/js/Mock/item'
 
-interface Props {
-  data: Array<string>
-  user: {
-    name: string
-  }
-}
-const Reg: React.VFC<Props> = (props) => {
+const Reg: React.VFC = () => {
   return (
     <>
-      <p>{props.user.name}</p>
-      <WorkerList workerArr={props.data} />
+      <Grid
+        container
+        rowSpacing={{ lg: 6, xs: 2 }}
+        columnSpacing={{ lg: 3, xs: 2 }}
+        mt={{ lg: 2, xs: 6 }}
+      >
+        {mockItems.map((item, index) => {
+          return <ItemCard key={index} item={item} />
+        })}
+      </Grid>
     </>
   )
 }
