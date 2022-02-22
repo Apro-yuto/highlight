@@ -12,7 +12,7 @@ class GetItemsTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $expectedSql      = 'select * from `items` where `user_id` = ? and `items`.`deleted_at` is null';
+        $expectedSql      = 'select * from "items" where "user_id" = ? and "items"."deleted_at" is null';
         $expectedBindings = [0 => $user->id];
 
         $result = app(GetItems::class)->execute($user->id);
