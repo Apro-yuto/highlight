@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             SupplierSeeder::class,
             ItemSeeder::class,
             LableSeeder::class,
+            ItemImgUrlSeeder::class,
             ColorItemSeeder::class,
         ]);
     }

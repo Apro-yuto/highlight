@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
         })->name('index');
 
         Route::get('/detail/{item_id}', function ($item_id) {
-            return '/detail/' . $item_id;
+            return Inertia::render('Item/Detail', ['id' => $item_id, 'user' => Auth::user()]);
         })->name('detail.index');
 
         Route::get('/store', function () {
