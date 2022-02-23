@@ -16,6 +16,9 @@
       </div>
       <div class="login_right">
         <div class="login_form">
+          <div class="login_form_logo">
+            <img src="{{ asset('logo_sp.png')  }}">
+          </div>
           <form
             method="POST"
             action="{{ route('login') }}"

@@ -1,13 +1,19 @@
 @import '_config';
-
 .login {
   display: flex;
-  align-items: flex-start;
   width: 100%;
+  @include pc {
+    align-items: flex-start;
+  }
+  @include sp {
+    flex-direction: column;
+  }
   &_left, &_right {
-    width: 50%;
     min-height: 100vh;
     position: relative;
+    @include pc {
+      width: 50%;
+    }
   }
   &_logo {
     width: 300px;
@@ -19,6 +25,12 @@
   &_right {
     background-color: $BASE;
   }
+  &_left {
+    @include sp {
+      display: none;
+    }
+
+  }
   &_form {
     position: absolute;
     top: 50%;
@@ -27,12 +39,23 @@
     margin: 0 auto;
     background-color: $WHITE;
     border-radius: 0.5em;
+    box-shadow: 0px 3px 15px rgba($color: $BLACK, $alpha: .3);
     @include pc {
-      width: 500px;
+      width: 450px;
       padding: 25px 35px;
     }
-    form {
-      width: 100%;
+    @include sp {
+      width: vwsp(600);
+      padding: vwsp(25) vwsp(45);
+    }
+    &_logo {
+      @include pc {
+        display: none;
+      }
+      @include sp {
+        width: vwsp(300);
+        margin: vwsp(60) auto 0;
+      }
     }
   }
   input {
@@ -40,10 +63,22 @@
     outline: none;
     padding: .3em .8em;
     border-bottom: 1px solid $BASE;
-    margin-top: 40px;
     transition: border-bottom .2s;
+    @include pc {
+      margin-top: 40px;
+    }
     &:focus {
       border-bottom: 1px solid darken($BASE, 45%);
+    }
+    &.login_email {
+      @include sp {
+        margin-top: vwsp(78);
+      }
+    }
+    &.login_password {
+      @include sp {
+        margin-top: vwsp(40);
+      }
     }
   }
   &_submit {
